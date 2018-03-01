@@ -20,16 +20,16 @@ public class TestItem {
 
 		UserMapper mapper = context.getBean(UserMapper.class);
 
-		User user = new User();
-		user.setName("hehe3");
-		user.setPassword("1231");
-		user.setNickname("jake124");
+		for (int i = 0; i < 25; i++) {
+			User user = new User();
+			user.setName("hehe"+i);
+			user.setPassword("1231");
+			user.setNickname("jake"+i);
+			mapper.addUser(user);
 
-		mapper.addUser(user);
-
+		}
 	}
-	
-	
+
 	@Test
 	public void getItemList() {
 
@@ -45,12 +45,11 @@ public class TestItem {
 		}
 
 		PageInfo<User> pageInfo = new PageInfo<User>(list);
-		
-		int total=(int) pageInfo.getTotal();
+
+		int total = (int) pageInfo.getTotal();
 
 		System.out.println("总数量:" + total);
 
 	}
-
 
 }

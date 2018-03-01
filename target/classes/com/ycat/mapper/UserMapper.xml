@@ -19,5 +19,17 @@
 	<select id="getUserList" resultMap="BaseResultMap">
 		select * from y_user
 	</select>
+	
+	<!-- 查询数据库中是否有对应的UserName，如果有，返回对应id，没有，返回0 -->
+	<select id="selectUserByName" parameterType="java.lang.String"
+		resultType="int">
+		select id from y_user where name = #{name}
+	</select>
+
+	<!-- 查询数据库中是否有对应的nickName，如果有，返回对应id，没有，返回0 -->
+	<select id="selectUserByNick" parameterType="java.lang.String"
+		resultType="int">
+		select id from y_user where nickname = #{nickname}
+	</select>
 
 </mapper>
