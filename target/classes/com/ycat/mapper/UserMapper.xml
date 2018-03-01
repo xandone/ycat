@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ycat.mapper.UserMapper">
+	<resultMap id="BaseResultMap" type="com.ycat.pojo.User">
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="nickname" property="nickname" jdbcType="BIGINT" />
+		<result column="rtime" property="rtime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<!-- id名称必须和 UserMapper中的方法名相对应 -->
+	<insert id="addUser" parameterType="com.ycat.pojo.User">
+		insert into y_user
+		(name,password,nickname) values (#{name},#{password},#{nickname})
+	</insert>
+
+	<select id="getUserList" resultMap="BaseResultMap">
+		select * from y_user
+	</select>
+
+</mapper>
