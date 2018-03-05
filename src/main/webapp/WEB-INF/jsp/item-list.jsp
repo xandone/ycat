@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<table class="easyui-datagrid" id="itemList" title="商品列表" 
+<table class="easyui-datagrid" id="itemList" title="用户列表" 
        data-options="singleSelect:false,collapsible:true,pagination:true,url:'/ycat/item/list',method:'get',pageSize:10,toolbar:toolbar">
     <thead>
         <tr>
             <th data-options="field:'ck',checkbox:true"></th>
+        	<th data-options="field:'id',width:100">客户ID</th>
         	<th data-options="field:'name',width:100">客户名字</th>
             <th data-options="field:'password',width:100">客户密码</th>
             <th data-options="field:'nickname',width:100">客户昵称</th>
@@ -30,7 +31,7 @@
         text:'新增',
         iconCls:'icon-add',
         handler:function(){
-        	$(".tree-title:contains('新增商品')").parent().click();
+        	$(".tree-title:contains('新增用户')").parent().click();
         }
     },{
         text:'编辑',
@@ -38,11 +39,11 @@
         handler:function(){
         	var ids = getSelectionsIds();
         	if(ids.length == 0){
-        		$.messager.alert('提示','必须选择一个商品才能编辑!');
+        		$.messager.alert('提示','必须选择一个用户才能编辑!');
         		return ;
         	}
         	if(ids.indexOf(',') > 0){
-        		$.messager.alert('提示','只能选择一个商品!');
+        		$.messager.alert('提示','只能选择一个用户!');
         		return ;
         	}
         	
@@ -105,59 +106,15 @@
         handler:function(){
         	var ids = getSelectionsIds();
         	if(ids.length == 0){
-        		$.messager.alert('提示','未选中商品!');
+        		$.messager.alert('提示','未选中用户!');
         		return ;
         	}
-        	$.messager.confirm('确认','确定删除ID为 '+ids+' 的商品吗？',function(r){
+        	$.messager.confirm('确认','确定删除ID为 '+ids+' 的用户吗？',function(r){
         	    if (r){
         	    	var params = {"ids":ids};
                 	$.post("/rest/item/delete",params, function(data){
             			if(data.status == 200){
-            				$.messager.alert('提示','删除商品成功!',undefined,function(){
-            					$("#itemList").datagrid("reload");
-            				});
-            			}
-            		});
-        	    }
-        	});
-        }
-    },'-',{
-        text:'下架',
-        iconCls:'icon-remove',
-        handler:function(){
-        	var ids = getSelectionsIds();
-        	if(ids.length == 0){
-        		$.messager.alert('提示','未选中商品!');
-        		return ;
-        	}
-        	$.messager.confirm('确认','确定下架ID为 '+ids+' 的商品吗？',function(r){
-        	    if (r){
-        	    	var params = {"ids":ids};
-                	$.post("/rest/item/instock",params, function(data){
-            			if(data.status == 200){
-            				$.messager.alert('提示','下架商品成功!',undefined,function(){
-            					$("#itemList").datagrid("reload");
-            				});
-            			}
-            		});
-        	    }
-        	});
-        }
-    },{
-        text:'上架',
-        iconCls:'icon-remove',
-        handler:function(){
-        	var ids = getSelectionsIds();
-        	if(ids.length == 0){
-        		$.messager.alert('提示','未选中商品!');
-        		return ;
-        	}
-        	$.messager.confirm('确认','确定上架ID为 '+ids+' 的商品吗？',function(r){
-        	    if (r){
-        	    	var params = {"ids":ids};
-                	$.post("/rest/item/reshelf",params, function(data){
-            			if(data.status == 200){
-            				$.messager.alert('提示','上架商品成功!',undefined,function(){
+            				$.messager.alert('提示','删除用户成功!',undefined,function(){
             					$("#itemList").datagrid("reload");
             				});
             			}
