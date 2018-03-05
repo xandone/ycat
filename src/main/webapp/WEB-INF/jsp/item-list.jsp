@@ -4,7 +4,6 @@
     <thead>
         <tr>
             <th data-options="field:'ck',checkbox:true"></th>
-        	<th data-options="field:'id',width:100">客户ID</th>
         	<th data-options="field:'name',width:100">客户名字</th>
             <th data-options="field:'password',width:100">客户密码</th>
             <th data-options="field:'nickname',width:100">客户昵称</th>
@@ -21,7 +20,7 @@
     	var sels = itemList.datagrid("getSelections");
     	var ids = [];
     	for(var i in sels){
-    		ids.push(sels[i].id);
+    		ids.push(sels[i].name);
     	}
     	ids = ids.join(",");
     	return ids;
@@ -111,13 +110,17 @@
         	}
         	$.messager.confirm('确认','确定删除ID为 '+ids+' 的用户吗？',function(r){
         	    if (r){
-        	    	var params = {"ids":ids};
-                	$.post("/rest/item/delete",params, function(data){
-            			if(data.status == 200){
+        	    	var params = {"name":ids};
+                	$.post("/ycat/rest/item/delete",params, function(data){
+            			if(data.code == '1'){
             				$.messager.alert('提示','删除用户成功!',undefined,function(){
             					$("#itemList").datagrid("reload");
             				});
-            			}
+            			}else {
+							$.messager.alert('提示','删除失败',undefined,function(){
+            					$("#itemList").datagrid("reload");
+            				});
+						}
             		});
         	    }
         	});

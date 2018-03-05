@@ -51,5 +51,14 @@ public class TestItem {
 		System.out.println("总数量:" + total);
 
 	}
+	
+	@Test
+	public void deleteUser() {
+		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+
+		UserMapper mapper = context.getBean(UserMapper.class);
+		
+		mapper.deleteUser("haha");
+	}
 
 }

@@ -13,4 +13,6 @@ public interface UserMapper {
 
 	Integer selectUserByNick(String nickname);
 
+	void deleteUser(String name);
+
 }
