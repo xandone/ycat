@@ -31,4 +31,9 @@ public class RegistServiceImpl implements RegistService {
 		userMapper.addUser(user);
 	}
 
+	public String selectNickByName(String name) {
+		String nick=userMapper.selectNickByName(name);
+		return nick;
+	}
+
 }

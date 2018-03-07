@@ -12,6 +12,8 @@ public interface RegistService {
 	
 	String selectPswByName(String name);
 	
+	String selectNickByName(String name);
+	
 	void addUser(User user);
 
 

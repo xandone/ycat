@@ -36,6 +36,10 @@
 		resultType="String">
 		select password from y_user where name = #{name}
 	</select>
+	<select id="selectNickByName" parameterType="java.lang.String"
+		resultType="String">
+		select nickname from y_user where name = #{name}
+	</select>
 
 	<delete id="deleteUser" parameterType="String">
 

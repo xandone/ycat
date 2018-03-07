@@ -87,6 +87,8 @@ public class RegisterController extends BaseController {
 			return baseResult;
 		}
 
+		String name_nick=registService.selectNickByName(name);
+		loginResult.setNickName(name_nick);
 		dataList.add(loginResult);
 		baseResult.setCode(SUCCESS_CODE);
 		baseResult.setMsg("验证成功");
