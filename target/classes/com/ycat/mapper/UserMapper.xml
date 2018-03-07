@@ -20,7 +20,7 @@
 		select * from y_user
 	</select>
 
-	<!-- 查询数据库中是否有对应的UserName，如果有，返回对应id，没有，返回0 -->
+	<!-- 查询数据库中是否有对应的email，如果有，返回对应id，没有，返回0 -->
 	<select id="selectUserByName" parameterType="java.lang.String"
 		resultType="int">
 		select id from y_user where name = #{name}
@@ -32,9 +32,15 @@
 		select id from y_user where nickname = #{nickname}
 	</select>
 
+	<select id="selectPswByName" parameterType="java.lang.String"
+		resultType="String">
+		select password from y_user where name = #{name}
+	</select>
+
 	<delete id="deleteUser" parameterType="String">
 
-		delete from y_user where name=#{name}
+		delete from y_user where
+		name=#{name}
 	</delete>
 
 
