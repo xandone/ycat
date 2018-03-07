@@ -7,8 +7,6 @@ public interface UserService {
 
 	EuDataResult getUserList(int page, int rows);
 	
-	EuDataResult getJokeList(int page, int rows);
-
 	DeleteResult deleteUser(String name) throws Exception;
 
 }

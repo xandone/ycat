@@ -25,16 +25,6 @@ public class UserController extends BaseController {
 
 	}
 	
-	@RequestMapping("/joke/list")
-	@ResponseBody
-	public EuDataResult getJokeList(Integer page, Integer rows) {
-
-		EuDataResult euDataResult = userService.getJokeList(page, rows);
-
-		return euDataResult;
-
-	}
-
 	@RequestMapping(value = "/rest/item/delete", method = RequestMethod.POST)
 	@ResponseBody
 	public DeleteResult deleteUser(String name) {

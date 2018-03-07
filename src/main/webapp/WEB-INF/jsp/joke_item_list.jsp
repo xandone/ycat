@@ -10,7 +10,7 @@
             <th data-options="field:'content',width:100">内容</th>
             <th data-options="field:'article_like_count',width:100">点赞数</th>
             <th data-options="field:'article_comment_count',width:100">评论数</th>
-            <th data-options="field:'post_time',width:150,align:'center',formatter:TAOTAO.formatDateTime">注册时间</th>
+            <th data-options="field:'post_time',width:150,align:'center',formatter:TAOTAO.formatDateTime">发布时间</th>
         </tr>
     </thead>
 </table>

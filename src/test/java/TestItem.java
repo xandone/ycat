@@ -7,12 +7,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.ycat.mapper.JokeMapper;
 import com.ycat.mapper.UserMapper;
+import com.ycat.pojo.JokeBean;
 import com.ycat.pojo.User;
 
 public class TestItem {
-	@Autowired
-	UserMapper userMapper;
 
 	@Test
 	public void getItemBy() {
@@ -22,9 +22,9 @@ public class TestItem {
 
 		for (int i = 0; i < 25; i++) {
 			User user = new User();
-			user.setName("hehe"+i);
+			user.setName("hehe" + i);
 			user.setPassword("1231");
-			user.setNickname("jake"+i);
+			user.setNickname("jake" + i);
 			mapper.addUser(user);
 
 		}
@@ -51,14 +51,52 @@ public class TestItem {
 		System.out.println("总数量:" + total);
 
 	}
-	
+
 	@Test
 	public void deleteUser() {
 		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
 
 		UserMapper mapper = context.getBean(UserMapper.class);
-		
+
 		mapper.deleteUser("haha");
+	}
+
+	@Test
+	public void addJoke() {
+		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+
+		JokeMapper mapper = context.getBean(JokeMapper.class);
+
+		for (int i = 0; i < 15; i++) {
+			JokeBean jokeBean = new JokeBean();
+			jokeBean.setJoke_id("100" + i);
+			jokeBean.setJoke_user_id("1000" + i);
+			jokeBean.setTitle("笑话" + i);
+			jokeBean.setContent("从前山上有个庙" + i);
+			mapper.addJoke(jokeBean);
+		}
+	}
+
+	@Test
+	public void getJokeList() {
+
+		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+
+		JokeMapper mapper = context.getBean(JokeMapper.class);
+
+		PageHelper.startPage(1, 10);
+		List<JokeBean> list = mapper.getJokeList();
+
+		for (JokeBean item : list) {
+			System.out.println(item.getTitle());
+		}
+
+		PageInfo<JokeBean> pageInfo = new PageInfo<JokeBean>(list);
+
+		int total = (int) pageInfo.getTotal();
+
+		System.out.println("总数量:" + total);
+
 	}
 
 }
