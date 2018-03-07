@@ -29,7 +29,7 @@
 			<li>
 				<span>段子管理</span>
 				<ul>
-					<li data-options="attributes:{'url':'content'}">内容管理</li>
+					<li data-options="attributes:{'url':'joke_item_list'}">段子管理</li>
 				</ul>
 			</li>
 		</ul>

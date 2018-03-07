@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ycat.mapper.JokeMapper">
+	<resultMap id="BaseResultMap" type="com.ycat.pojo.JokeBean">
+		<result column="joke_id" property="joke_id" jdbcType="VARCHAR" />
+		<result column="joke_user_id" property="joke_user_id" jdbcType="VARCHAR" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="content" property="content" jdbcType="VARCHAR" />
+		<result column="article_like_count" property="article_like_count" jdbcType="INTEGER" />
+		<result column="article_comment_count" property="article_comment_count" jdbcType="INTEGER" />
+		<result column="post_time" property="post_time" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<!-- id名称必须和 UserMapper中的方法名相对应 -->
+	<insert id="addJoke" parameterType="com.ycat.pojo.JokeBean">
+		insert into y_joke
+		(joke_id,
+		joke_user_id,
+		title,
+		content,
+		post_time,
+		article_like_count,
+		article_comment_count
+		) values
+		 (#{joke_id},
+		 #{joke_user_id},
+		 #{title},
+		 #{content},
+		 #{post_time},
+		 #{article_like_count},
+		 #{article_like_count}
+		 )
+	</insert>
+
+	<select id="getJokeList" resultMap="BaseResultMap">
+		select * from y_joke
+	</select>
+
+</mapper>
