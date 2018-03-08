@@ -30,6 +30,7 @@
 				<span>段子管理</span>
 				<ul>
 					<li data-options="attributes:{'url':'joke_item_list'}">段子管理</li>
+					<li data-options="attributes:{'url':'joke_add'}">新增段子</li>
 				</ul>
 			</li>
 		</ul>

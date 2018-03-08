@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -67,12 +68,13 @@ public class TestItem {
 
 		JokeMapper mapper = context.getBean(JokeMapper.class);
 
-		for (int i = 0; i < 15; i++) {
+		for (int i = 0; i < 3; i++) {
 			JokeBean jokeBean = new JokeBean();
 			jokeBean.setJoke_id("100" + i);
 			jokeBean.setJoke_user_id("1000" + i);
 			jokeBean.setTitle("笑话" + i);
 			jokeBean.setContent("从前山上有个庙" + i);
+			jokeBean.setPost_time(new Date());
 			mapper.addJoke(jokeBean);
 		}
 	}
