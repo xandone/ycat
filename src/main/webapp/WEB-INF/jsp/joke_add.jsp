@@ -24,7 +24,7 @@
 	<div style="padding: 5px">
 		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">提交</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">重置</a>
-		<input type="button"value="登录"onclick="clearForm()"></input>
+		<input type="button"value="登录"onclick="clearbtn()"></input>
 	</div>
 </div>
 <script type="text/javascript">
@@ -40,7 +40,7 @@
 	html页面调用js文件里的函数，写法必须为submitForm = function (){}形式，其他方式写，html页面会搜索不到该函数。 */
 	//提交表单
 	submitForm = function() {
-		$.messager.alert('提示', '敬老');
+		$.messager.alert('提示', '111');
 
 		//有效性验证
 		if (!$('#itemAddForm').form('validate')) {
@@ -57,8 +57,12 @@
 	}
 
 	clearForm = function() {
-		$.messager.alert('提示', '敬--老');
+		$.messager.alert('提示', '1111');
 /* 		$('#itemAddForm').form('reset');
 		itemAddEditor.html(''); */
+	}
+	
+	clearbtn=function(){
+		$.messager.alert('提示', '1111');
 	}
 </script>

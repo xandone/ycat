@@ -4,11 +4,12 @@ import java.util.Date;
 
 public class User {
 	private int id;
+	private String user_id;
 	private String name;
 	private String password;
 	private String nickname;
 	private Date rtime;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -47,6 +48,14 @@ public class User {
 
 	public void setRtime(Date rtime) {
 		this.rtime = rtime;
+	}
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 
 }

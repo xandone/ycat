@@ -32,16 +32,23 @@ public class JokeController extends BaseController {
 	@ResponseBody
 	public BaseResult addJoke(String title, String joke_user_id, String content) {
 
-		System.out.println("基拉》。");
 		JokeBean jokeBean = jokeService.addJoke(title, joke_user_id, content);
 		BaseResult baseResult = new BaseResult();
 		List<JokeBean> list = new ArrayList<JokeBean>();
 		list.add(jokeBean);
 		baseResult.setDataList(list);
 		baseResult.setCode(SUCCESS_CODE);
-	
+
 		return baseResult;
 
+	}
+
+	@RequestMapping("joke/test")
+	@ResponseBody
+	public BaseResult joketest() {
+
+		BaseResult baseResult = new BaseResult();
+		return baseResult;
 	}
 
 }

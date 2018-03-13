@@ -2,6 +2,7 @@ package com.ycat.pojo.result;
 
 
 public class LoginResult {
+	private String userId;
 	private String nickName;
 	private String iconUrl;
 	public String getNickName() {
@@ -16,5 +17,12 @@ public class LoginResult {
 	public void setIconUrl(String iconUrl) {
 		this.iconUrl = iconUrl;
 	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	
 	
 }

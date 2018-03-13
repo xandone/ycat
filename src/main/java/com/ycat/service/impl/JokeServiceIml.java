@@ -14,7 +14,6 @@ import com.ycat.pojo.result.EuDataResult;
 import com.ycat.service.JokeService;
 import com.ycat.utils.IDUtils;
 
-import config.Config;
 
 @Service
 public class JokeServiceIml implements JokeService {
@@ -28,6 +27,8 @@ public class JokeServiceIml implements JokeService {
 		List<JokeBean> list = jokeMapper.getJokeList();
 
 		EuDataResult euDataResult = new EuDataResult();
+		
+		System.out.println(list.size());
 
 		euDataResult.setRows(list);
 		int total = (int) new PageInfo<JokeBean>(list).getTotal();
@@ -41,7 +42,7 @@ public class JokeServiceIml implements JokeService {
 		JokeBean jokeBean = new JokeBean();
 
 		jokeBean.setJoke_id(IDUtils.genItemId());
-		jokeBean.setJoke_user_id(Config.AADMIN_ID);
+		jokeBean.setJoke_user_id(joke_user_id);
 		jokeBean.setTitle(title);
 		jokeBean.setContent(content);
 		jokeBean.setPost_time(new Date());

@@ -41,11 +41,11 @@
         handler:function(){
         	var ids = getSelectionsIds();
         	if(ids.length == 0){
-        		$.messager.alert('提示','必须选择一个用户才能编辑!');
+        		$.messager.alert('提示','必须选择一条才能编辑!');
         		return ;
         	}
         	if(ids.indexOf(',') > 0){
-        		$.messager.alert('提示','只能选择一个用户!');
+        		$.messager.alert('提示','只能选择一个段子!');
         		return ;
         	}
         	

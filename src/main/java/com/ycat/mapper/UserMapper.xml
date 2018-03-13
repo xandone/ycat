@@ -13,7 +13,7 @@
 	<!-- id名称必须和 UserMapper中的方法名相对应 -->
 	<insert id="addUser" parameterType="com.ycat.pojo.User">
 		insert into y_user
-		(name,password,nickname) values (#{name},#{password},#{nickname})
+		(name,password,nickname,user_id) values (#{name},#{password},#{nickname},#{user_id})
 	</insert>
 
 	<select id="getUserList" resultMap="BaseResultMap">

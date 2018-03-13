@@ -4,6 +4,7 @@
     <thead>
         <tr>
             <th data-options="field:'ck',checkbox:true"></th>
+        	<th data-options="field:'user_id',width:100">客户ID</th>
         	<th data-options="field:'name',width:100">客户名字</th>
             <th data-options="field:'password',width:100">客户密码</th>
             <th data-options="field:'nickname',width:100">客户昵称</th>

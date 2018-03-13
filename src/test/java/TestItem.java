@@ -2,7 +2,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -21,11 +20,12 @@ public class TestItem {
 
 		UserMapper mapper = context.getBean(UserMapper.class);
 
-		for (int i = 0; i < 25; i++) {
+		for (int i = 0; i < 15; i++) {
 			User user = new User();
-			user.setName("hehe" + i);
-			user.setPassword("1231");
-			user.setNickname("jake" + i);
+			user.setName("1" + i);
+			user.setPassword("123");
+			user.setNickname("二虎" + i);
+			user.setUser_id("0001");
 			mapper.addUser(user);
 
 		}
@@ -68,15 +68,14 @@ public class TestItem {
 
 		JokeMapper mapper = context.getBean(JokeMapper.class);
 
-		for (int i = 0; i < 3; i++) {
 			JokeBean jokeBean = new JokeBean();
-			jokeBean.setJoke_id("100" + i);
-			jokeBean.setJoke_user_id("1000" + i);
-			jokeBean.setTitle("笑话" + i);
-			jokeBean.setContent("从前山上有个庙" + i);
+			jokeBean.setJoke_id("100");
+			jokeBean.setJoke_user_id("1000");
+			jokeBean.setTitle("吵架");
+			jokeBean.setContent("朋友和媳妇吵架了，想买条项链，给她个惊喜求她原谅，但是他又不知道媳妇带多大的，于是就半夜起来用绳子量一下，没想到她醒了……");
 			jokeBean.setPost_time(new Date());
 			mapper.addJoke(jokeBean);
-		}
+		
 	}
 
 	@Test
