@@ -8,8 +8,10 @@
 		<result column="joke_user_id" property="joke_user_id" jdbcType="VARCHAR" />
 		<result column="title" property="title" jdbcType="VARCHAR" />
 		<result column="content" property="content" jdbcType="VARCHAR" />
-		<result column="article_like_count" property="article_like_count" jdbcType="INTEGER" />
-		<result column="article_comment_count" property="article_comment_count" jdbcType="INTEGER" />
+		<result column="article_like_count" property="article_like_count"
+			jdbcType="INTEGER" />
+		<result column="article_comment_count" property="article_comment_count"
+			jdbcType="INTEGER" />
 		<result column="post_time" property="post_time" jdbcType="TIMESTAMP" />
 	</resultMap>
 
@@ -24,14 +26,14 @@
 		article_like_count,
 		article_comment_count
 		) values
-		 (#{joke_id},
-		 #{joke_user_id},
-		 #{title},
-		 #{content},
-		 #{post_time},
-		 #{article_like_count},
-		 #{article_like_count}
-		 )
+		(#{joke_id},
+		#{joke_user_id},
+		#{title},
+		#{content},
+		#{post_time},
+		#{article_like_count},
+		#{article_comment_count}
+		)
 	</insert>
 
 	<select id="getJokeList" resultMap="BaseResultMap">

@@ -42,4 +42,9 @@ public class UserServiceIml implements UserService {
 		return deleteResult;
 	}
 
+	public User selectUserById(String userId) {
+		User user = userMapper.selectUserById(userId);
+		return user;
+	}
+
 }

@@ -20,12 +20,12 @@ public class TestItem {
 
 		UserMapper mapper = context.getBean(UserMapper.class);
 
-		for (int i = 0; i < 15; i++) {
+		for (int i = 0; i < 4; i++) {
 			User user = new User();
-			user.setName("1" + i);
+			user.setName("100" + i);
 			user.setPassword("123");
 			user.setNickname("二虎" + i);
-			user.setUser_id("0001");
+			user.setUser_id("0001"+i);
 			mapper.addUser(user);
 
 		}
@@ -70,9 +70,12 @@ public class TestItem {
 
 			JokeBean jokeBean = new JokeBean();
 			jokeBean.setJoke_id("100");
-			jokeBean.setJoke_user_id("1000");
-			jokeBean.setTitle("吵架");
-			jokeBean.setContent("朋友和媳妇吵架了，想买条项链，给她个惊喜求她原谅，但是他又不知道媳妇带多大的，于是就半夜起来用绳子量一下，没想到她醒了……");
+			jokeBean.setJoke_user_id("0000");
+			jokeBean.setTitle("登岳阳楼");
+			jokeBean.setContent("昔闻洞庭水，今上岳阳楼。\r\n" + 
+					"吴楚东南坼，乾坤日夜浮。\r\n" + 
+					"亲朋无一字，老病有孤舟。\r\n" + 
+					"戎马关山北，凭轩涕泗流。");
 			jokeBean.setPost_time(new Date());
 			mapper.addJoke(jokeBean);
 		

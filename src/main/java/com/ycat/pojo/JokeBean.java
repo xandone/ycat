@@ -11,6 +11,9 @@ public class JokeBean {
 	private int article_like_count;
 	private int article_comment_count;
 
+	private String joke_user_nick;
+	private String joke_user_icon;
+
 	public String getJoke_id() {
 		return joke_id;
 	}
@@ -65,6 +68,23 @@ public class JokeBean {
 
 	public void setArticle_comment_count(int article_comment_count) {
 		this.article_comment_count = article_comment_count;
+	}
+
+
+	public String getJoke_user_nick() {
+		return joke_user_nick;
+	}
+
+	public void setJoke_user_nick(String joke_user_nick) {
+		this.joke_user_nick = joke_user_nick;
+	}
+
+	public String getJoke_user_icon() {
+		return joke_user_icon;
+	}
+
+	public void setJoke_user_icon(String joke_user_icon) {
+		this.joke_user_icon = joke_user_icon;
 	}
 
 }

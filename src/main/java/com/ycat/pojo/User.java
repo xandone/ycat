@@ -9,6 +9,7 @@ public class User {
 	private String password;
 	private String nickname;
 	private Date rtime;
+	private String user_icon;
 
 	public int getId() {
 		return id;
@@ -57,5 +58,14 @@ public class User {
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
+
+	public String getUser_icon() {
+		return user_icon;
+	}
+
+	public void setUser_icon(String user_icon) {
+		this.user_icon = user_icon;
+	}
+	
 
 }

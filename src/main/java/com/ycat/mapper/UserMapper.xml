@@ -13,7 +13,8 @@
 	<!-- id名称必须和 UserMapper中的方法名相对应 -->
 	<insert id="addUser" parameterType="com.ycat.pojo.User">
 		insert into y_user
-		(name,password,nickname,user_id) values (#{name},#{password},#{nickname},#{user_id})
+		(name,password,nickname,user_id) values
+		(#{name},#{password},#{nickname},#{user_id})
 	</insert>
 
 	<select id="getUserList" resultMap="BaseResultMap">
@@ -36,16 +37,25 @@
 		resultType="String">
 		select password from y_user where name = #{name}
 	</select>
+	
 	<select id="selectNickByName" parameterType="java.lang.String"
 		resultType="String">
 		select nickname from y_user where name = #{name}
 	</select>
+	
+	<select id="selectNickById" parameterType="java.lang.String"
+		resultType="String">
+		select nickname from y_user where user_id = #{user_id}
+	</select>
+	
+	<select id="selectUserById" parameterType="java.lang.String"
+		resultType="com.ycat.pojo.User">
+		select * from y_user where user_id = #{user_id}
+	</select>
 
 	<delete id="deleteUser" parameterType="String">
-
 		delete from y_user where
 		name=#{name}
 	</delete>
-
 
 </mapper>
