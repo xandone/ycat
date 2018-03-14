@@ -37,17 +37,17 @@
 		resultType="String">
 		select password from y_user where name = #{name}
 	</select>
-	
+
 	<select id="selectNickByName" parameterType="java.lang.String"
 		resultType="String">
 		select nickname from y_user where name = #{name}
 	</select>
-	
+
 	<select id="selectNickById" parameterType="java.lang.String"
 		resultType="String">
 		select nickname from y_user where user_id = #{user_id}
 	</select>
-	
+
 	<select id="selectUserById" parameterType="java.lang.String"
 		resultType="com.ycat.pojo.User">
 		select * from y_user where user_id = #{user_id}
@@ -57,5 +57,10 @@
 		delete from y_user where
 		name=#{name}
 	</delete>
+
+	<update id="changeUserIocn" parameterType="java.util.Map">
+		update y_user set
+		user_icon=#{user_icon} where user_id = #{user_id}
+	</update>
 
 </mapper>

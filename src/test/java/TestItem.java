@@ -1,5 +1,7 @@
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -61,6 +63,20 @@ public class TestItem {
 
 		mapper.deleteUser("haha");
 	}
+	
+	@Test
+	public void changeUserIocn() {
+		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+
+		UserMapper mapper = context.getBean(UserMapper.class);
+
+		Map<String, String> map= new HashMap();
+		map.put("user_icon", "https://upload-images.jianshu.io/upload_images/2518499-87cb6cb05233b36d.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+		map.put("user_id", "0001");
+	
+		mapper.changeUserIocn(map);
+	}
+
 
 	@Test
 	public void addJoke() {
