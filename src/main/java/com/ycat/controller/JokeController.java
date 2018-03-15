@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ycat.pojo.JokeBean;
+import com.ycat.pojo.JokeLikeBean;
 import com.ycat.pojo.result.BaseResult;
 import com.ycat.pojo.result.EuDataResult;
 import com.ycat.service.JokeService;
@@ -43,12 +44,51 @@ public class JokeController extends BaseController {
 
 	}
 
-	@RequestMapping("joke/test")
+	@RequestMapping("joke/thumbs")
 	@ResponseBody
-	public BaseResult joketest() {
-
+	public BaseResult thumbsJoke(String jokeId, String jokeUserId) {
 		BaseResult baseResult = new BaseResult();
+		boolean isThumbs = false;
+		List<JokeLikeBean> likeBeans = jokeService.selectJokeLikeById(jokeId);
+		for (int i = 0; i < likeBeans.size(); i++) {
+			if (jokeUserId.equals(likeBeans.get(i).getJoke_user_id())) {
+				// 已点赞
+				isThumbs = true;
+				break;
+			}
+		}
+		if (isThumbs) {
+			baseResult.setCode(ERROR_CODE);
+		} else {
+			jokeService.thumbsJoke(jokeId, jokeUserId);
+			baseResult.setCode(SUCCESS_CODE);
+		}
+
 		return baseResult;
 	}
+	
+	
+	@RequestMapping("joke/thumbs/self")
+	@ResponseBody
+	public BaseResult getThumbsJoke(String jokeId, String jokeUserId) {
+		BaseResult baseResult = new BaseResult();
+		boolean isThumbs = false;
+		List<JokeLikeBean> likeBeans = jokeService.selectJokeLikeById(jokeId);
+		for (int i = 0; i < likeBeans.size(); i++) {
+			if (jokeUserId.equals(likeBeans.get(i).getJoke_user_id())) {
+				// 已点赞
+				isThumbs = true;
+				break;
+			}
+		}
+		if (isThumbs) {
+			baseResult.setCode(ERROR_CODE);
+		} else {
+			baseResult.setCode(SUCCESS_CODE);
+		}
+
+		return baseResult;
+	}
+
 
 }

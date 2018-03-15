@@ -11,7 +11,9 @@ import com.github.pagehelper.PageInfo;
 import com.ycat.mapper.JokeMapper;
 import com.ycat.mapper.UserMapper;
 import com.ycat.pojo.JokeBean;
+import com.ycat.pojo.JokeLikeBean;
 import com.ycat.pojo.User;
+import com.ycat.pojo.result.BaseResult;
 import com.ycat.pojo.result.EuDataResult;
 import com.ycat.service.JokeService;
 import com.ycat.utils.IDUtils;
@@ -61,6 +63,16 @@ public class JokeServiceIml implements JokeService {
 		jokeMapper.addJoke(jokeBean);
 
 		return jokeBean;
+	}
+
+	public void thumbsJoke(String jokeId, String userId) {
+		JokeLikeBean jokeLikeBean=new JokeLikeBean(jokeId,userId);
+		jokeMapper.thumbsJoke(jokeLikeBean);
+	}
+
+	public List<JokeLikeBean> selectJokeLikeById(String jokeId) {
+		List<JokeLikeBean> likeBeans = jokeMapper.selectJokeLikeById(jokeId);
+		return likeBeans;
 	}
 
 }

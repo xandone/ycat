@@ -12,6 +12,7 @@ import com.github.pagehelper.PageInfo;
 import com.ycat.mapper.JokeMapper;
 import com.ycat.mapper.UserMapper;
 import com.ycat.pojo.JokeBean;
+import com.ycat.pojo.JokeLikeBean;
 import com.ycat.pojo.User;
 
 public class TestItem {
@@ -27,7 +28,7 @@ public class TestItem {
 			user.setName("100" + i);
 			user.setPassword("123");
 			user.setNickname("二虎" + i);
-			user.setUser_id("0001"+i);
+			user.setUser_id("0001" + i);
 			mapper.addUser(user);
 
 		}
@@ -63,20 +64,20 @@ public class TestItem {
 
 		mapper.deleteUser("haha");
 	}
-	
+
 	@Test
 	public void changeUserIocn() {
 		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
 
 		UserMapper mapper = context.getBean(UserMapper.class);
 
-		Map<String, String> map= new HashMap();
-		map.put("user_icon", "https://upload-images.jianshu.io/upload_images/2518499-87cb6cb05233b36d.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+		Map<String, String> map = new HashMap();
+		map.put("user_icon",
+				"https://upload-images.jianshu.io/upload_images/2518499-87cb6cb05233b36d.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
 		map.put("user_id", "0001");
-	
+
 		mapper.changeUserIocn(map);
 	}
-
 
 	@Test
 	public void addJoke() {
@@ -84,24 +85,20 @@ public class TestItem {
 
 		JokeMapper mapper = context.getBean(JokeMapper.class);
 
-			JokeBean jokeBean = new JokeBean();
-			jokeBean.setJoke_id("100");
-			jokeBean.setJoke_user_id("0000");
-			jokeBean.setTitle("登岳阳楼");
-			jokeBean.setContent("昔闻洞庭水，今上岳阳楼。\r\n" + 
-					"吴楚东南坼，乾坤日夜浮。\r\n" + 
-					"亲朋无一字，老病有孤舟。\r\n" + 
-					"戎马关山北，凭轩涕泗流。");
-			jokeBean.setPost_time(new Date());
-			mapper.addJoke(jokeBean);
-		
+		JokeBean jokeBean = new JokeBean();
+		jokeBean.setJoke_id("100");
+		jokeBean.setJoke_user_id("0000");
+		jokeBean.setTitle("登岳阳楼");
+		jokeBean.setContent("昔闻洞庭水，今上岳阳楼。\r\n" + "吴楚东南坼，乾坤日夜浮。\r\n" + "亲朋无一字，老病有孤舟。\r\n" + "戎马关山北，凭轩涕泗流。");
+		jokeBean.setPost_time(new Date());
+		mapper.addJoke(jokeBean);
+
 	}
 
 	@Test
 	public void getJokeList() {
 
 		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
-
 		JokeMapper mapper = context.getBean(JokeMapper.class);
 
 		PageHelper.startPage(1, 10);
@@ -117,6 +114,30 @@ public class TestItem {
 
 		System.out.println("总数量:" + total);
 
+	}
+
+	@Test
+	public void selectJokeLikeById() {
+		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+		JokeMapper mapper = context.getBean(JokeMapper.class);
+
+		List<JokeLikeBean> list = mapper.selectJokeLikeById("1113");
+
+		for (JokeLikeBean a : list) {
+			System.out.println(a.getJoke_user_id());
+		}
+	}
+
+	@Test
+	public void thumbsJoke() {
+		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+		JokeMapper mapper = context.getBean(JokeMapper.class);
+
+		JokeLikeBean jokeLikeBean = new JokeLikeBean();
+		jokeLikeBean.setJoke_id("1113");
+		jokeLikeBean.setJoke_user_id("23444");
+
+		mapper.thumbsJoke(jokeLikeBean);
 	}
 
 }

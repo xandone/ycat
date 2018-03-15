@@ -15,6 +15,11 @@
 		<result column="post_time" property="post_time" jdbcType="TIMESTAMP" />
 	</resultMap>
 
+	<resultMap id="JokeLikeMap" type="com.ycat.pojo.JokeLikeBean">
+		<result column="joke_id" property="joke_id" jdbcType="VARCHAR" />
+		<result column="joke_user_id" property="joke_user_id" jdbcType="VARCHAR" />
+	</resultMap>
+
 	<!-- id名称必须和 UserMapper中的方法名相对应 -->
 	<insert id="addJoke" parameterType="com.ycat.pojo.JokeBean">
 		insert into y_joke
@@ -39,5 +44,22 @@
 	<select id="getJokeList" resultMap="BaseResultMap">
 		select * from y_joke
 	</select>
+
+	<select id="selectJokeLikeById" resultMap="JokeLikeMap">
+		select * from
+		y_joke_like
+		where joke_id = #{joke_id}
+	</select>
+
+	<insert id="thumbsJoke" parameterType="com.ycat.pojo.JokeLikeBean">
+		insert into y_joke_like(
+		joke_id,
+		joke_user_id)
+		values(
+		#{joke_id},
+		#{joke_user_id})
+	</insert>
+
+
 
 </mapper>
