@@ -15,6 +15,7 @@ import com.ycat.pojo.result.BaseResult;
 import com.ycat.pojo.result.LoginResult;
 import com.ycat.pojo.result.RegistResult;
 import com.ycat.service.RegistService;
+import com.ycat.utils.IDUtils;
 import com.ycat.utils.XString;
 
 @Controller
@@ -31,11 +32,13 @@ public class RegisterController extends BaseController {
 			@RequestParam(value = "password", required = true) String password,
 			@RequestParam(value = "nickname", required = true) String nickname) {
 
-		System.out.println(name + "  " + password + "  " + nickname);
 		User user = new User();
 		user.setName(name);
 		user.setPassword(password);
 		user.setNickname(nickname);
+		user.setUser_id(IDUtils.RandomId());
+		
+		System.out.println(IDUtils.RandomId());
 
 		BaseResult baseResult = new BaseResult();
 		RegistResult registResult = new RegistResult();
@@ -87,7 +90,7 @@ public class RegisterController extends BaseController {
 			return baseResult;
 		}
 
-		String name_nick=registService.selectNickByName(name);
+		String name_nick = registService.selectNickByName(name);
 		loginResult.setNickName(name_nick);
 		dataList.add(loginResult);
 		baseResult.setCode(SUCCESS_CODE);

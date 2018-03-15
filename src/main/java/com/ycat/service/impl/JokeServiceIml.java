@@ -13,7 +13,6 @@ import com.ycat.mapper.UserMapper;
 import com.ycat.pojo.JokeBean;
 import com.ycat.pojo.JokeLikeBean;
 import com.ycat.pojo.User;
-import com.ycat.pojo.result.BaseResult;
 import com.ycat.pojo.result.EuDataResult;
 import com.ycat.service.JokeService;
 import com.ycat.utils.IDUtils;
@@ -32,9 +31,13 @@ public class JokeServiceIml implements JokeService {
 
 		for (JokeBean bean : list) {
 			User user = userMapper.selectUserById(bean.getJoke_user_id());
+			List<JokeLikeBean> likeBeans = jokeMapper.selectJokeLikeById(bean.getJoke_id());
 			if (user != null) {
 				bean.setJoke_user_nick(user.getNickname());
 				bean.setJoke_user_icon(user.getUser_icon());
+			}
+			if (likeBeans != null) {
+				bean.setArticle_like_count(likeBeans.size());
 			}
 		}
 
@@ -53,7 +56,7 @@ public class JokeServiceIml implements JokeService {
 	public JokeBean addJoke(String title, String joke_user_id, String content) {
 		JokeBean jokeBean = new JokeBean();
 
-		jokeBean.setJoke_id(IDUtils.genItemId());
+		jokeBean.setJoke_id(IDUtils.RandomId());
 		jokeBean.setJoke_user_id(joke_user_id);
 		jokeBean.setTitle(title);
 		jokeBean.setContent(content);
@@ -66,7 +69,7 @@ public class JokeServiceIml implements JokeService {
 	}
 
 	public void thumbsJoke(String jokeId, String userId) {
-		JokeLikeBean jokeLikeBean=new JokeLikeBean(jokeId,userId);
+		JokeLikeBean jokeLikeBean = new JokeLikeBean(jokeId, userId);
 		jokeMapper.thumbsJoke(jokeLikeBean);
 	}
 

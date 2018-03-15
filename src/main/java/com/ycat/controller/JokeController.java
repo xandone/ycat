@@ -58,16 +58,17 @@ public class JokeController extends BaseController {
 			}
 		}
 		if (isThumbs) {
+			// 已点赞
 			baseResult.setCode(ERROR_CODE);
 		} else {
+			//
 			jokeService.thumbsJoke(jokeId, jokeUserId);
 			baseResult.setCode(SUCCESS_CODE);
 		}
 
 		return baseResult;
 	}
-	
-	
+
 	@RequestMapping("joke/thumbs/self")
 	@ResponseBody
 	public BaseResult getThumbsJoke(String jokeId, String jokeUserId) {
@@ -82,6 +83,7 @@ public class JokeController extends BaseController {
 			}
 		}
 		if (isThumbs) {
+			// 已点赞
 			baseResult.setCode(ERROR_CODE);
 		} else {
 			baseResult.setCode(SUCCESS_CODE);
@@ -89,6 +91,5 @@ public class JokeController extends BaseController {
 
 		return baseResult;
 	}
-
 
 }

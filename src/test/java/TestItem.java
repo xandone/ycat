@@ -134,7 +134,7 @@ public class TestItem {
 		JokeMapper mapper = context.getBean(JokeMapper.class);
 
 		JokeLikeBean jokeLikeBean = new JokeLikeBean();
-		jokeLikeBean.setJoke_id("1113");
+		jokeLikeBean.setJoke_id("11111");
 		jokeLikeBean.setJoke_user_id("23444");
 
 		mapper.thumbsJoke(jokeLikeBean);
