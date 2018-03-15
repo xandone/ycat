@@ -92,4 +92,23 @@ public class JokeController extends BaseController {
 		return baseResult;
 	}
 
+	@RequestMapping("joke/comment/add")
+	@ResponseBody
+	public BaseResult addComment(String jokeId, String userId, String details) {
+		jokeService.addComment(jokeId, userId, details);
+		BaseResult baseResult = new BaseResult();
+		baseResult.setCode(SUCCESS_CODE);
+		return baseResult;
+	}
+
+	@RequestMapping("joke/comment/list")
+	@ResponseBody
+	public EuDataResult getJokeCommentById(Integer page, Integer rows, String jokeId) {
+
+		EuDataResult euDataResult = jokeService.getJokeCommentById(page, rows, jokeId);
+
+		return euDataResult;
+
+	}
+
 }

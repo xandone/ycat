@@ -10,6 +10,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.ycat.mapper.JokeMapper;
 import com.ycat.mapper.UserMapper;
+import com.ycat.pojo.CommentBean;
 import com.ycat.pojo.JokeBean;
 import com.ycat.pojo.JokeLikeBean;
 import com.ycat.pojo.User;
@@ -76,6 +77,41 @@ public class JokeServiceIml implements JokeService {
 	public List<JokeLikeBean> selectJokeLikeById(String jokeId) {
 		List<JokeLikeBean> likeBeans = jokeMapper.selectJokeLikeById(jokeId);
 		return likeBeans;
+	}
+
+	public void addComment(String jokeId, String userId, String details) {
+		CommentBean commentBean = new CommentBean();
+		commentBean.setComment_id(IDUtils.RandomId());
+		commentBean.setJoke_id(jokeId);
+		commentBean.setComment_user_id(userId);
+		commentBean.setComment_details(details);
+		commentBean.setComment_date(new Date());
+		jokeMapper.addComment(commentBean);
+
+	}
+
+	public EuDataResult getJokeCommentById(int page, int rows, String jokeId) {
+		PageHelper.startPage(page, rows);
+		List<CommentBean> list = jokeMapper.getJokeCommentById(jokeId);
+
+		for (CommentBean bean : list) {
+			User user = userMapper.selectUserById(bean.getComment_user_id());
+			if (user != null) {
+				bean.setComment_nick(user.getNickname());
+				bean.setComment_icon(user.getUser_icon());
+			}
+		}
+
+		EuDataResult euDataResult = new EuDataResult();
+
+		System.out.println(list.size());
+
+		euDataResult.setRows(list);
+		int total = (int) new PageInfo<CommentBean>(list).getTotal();
+
+		euDataResult.setTotal(total);
+
+		return euDataResult;
 	}
 
 }

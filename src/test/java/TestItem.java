@@ -11,9 +11,11 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.ycat.mapper.JokeMapper;
 import com.ycat.mapper.UserMapper;
+import com.ycat.pojo.CommentBean;
 import com.ycat.pojo.JokeBean;
 import com.ycat.pojo.JokeLikeBean;
 import com.ycat.pojo.User;
+import com.ycat.utils.IDUtils;
 
 public class TestItem {
 
@@ -138,6 +140,21 @@ public class TestItem {
 		jokeLikeBean.setJoke_user_id("23444");
 
 		mapper.thumbsJoke(jokeLikeBean);
+	}
+
+	@Test
+	public void addComment() {
+		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+		JokeMapper mapper = context.getBean(JokeMapper.class);
+
+		CommentBean commentBean = new CommentBean();
+		commentBean.setComment_id(IDUtils.RandomId());
+		commentBean.setJoke_id("152112021530410");
+		commentBean.setComment_user_id("152112021530406");
+		commentBean.setComment_details("写得好");
+		commentBean.setComment_date(new Date());
+
+		mapper.addComment(commentBean);
 	}
 
 }

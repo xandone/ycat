@@ -20,6 +20,16 @@
 		<result column="joke_user_id" property="joke_user_id" jdbcType="VARCHAR" />
 	</resultMap>
 
+	<resultMap id="JokeCommentMap" type="com.ycat.pojo.CommentBean">
+		<result column="comment_id" property="comment_id" jdbcType="VARCHAR" />
+		<result column="joke_id" property="joke_id" jdbcType="VARCHAR" />
+		<result column="comment_user_id" property="comment_user_id"
+			jdbcType="VARCHAR" />
+		<result column="comment_details" property="comment_details"
+			jdbcType="VARCHAR" />
+		<result column="comment_date" property="comment_date" jdbcType="TIMESTAMP" />
+	</resultMap>
+
 	<!-- id名称必须和 UserMapper中的方法名相对应 -->
 	<insert id="addJoke" parameterType="com.ycat.pojo.JokeBean">
 		insert into y_joke
@@ -60,6 +70,26 @@
 		#{joke_user_id})
 	</insert>
 
+	<insert id="addComment" parameterType="com.ycat.pojo.CommentBean">
+		insert into
+		y_joke_comment(
+		comment_id,
+		joke_id,
+		comment_user_id,
+		comment_details,
+		comment_date)
+		values(
+		#{comment_id},
+		#{joke_id},
+		#{comment_user_id},
+		#{comment_details},
+		#{comment_date})
+	</insert>
+
+	<select id="getJokeCommentById" resultMap="JokeCommentMap">
+		select * from
+		y_joke_comment where joke_id = #{joke_id}
+	</select>
 
 
 </mapper>
