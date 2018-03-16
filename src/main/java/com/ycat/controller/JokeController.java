@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ycat.pojo.CommentBean;
 import com.ycat.pojo.JokeBean;
 import com.ycat.pojo.JokeLikeBean;
 import com.ycat.pojo.result.BaseResult;
@@ -95,10 +96,21 @@ public class JokeController extends BaseController {
 	@RequestMapping("joke/comment/add")
 	@ResponseBody
 	public BaseResult addComment(String jokeId, String userId, String details) {
-		jokeService.addComment(jokeId, userId, details);
+
 		BaseResult baseResult = new BaseResult();
-		baseResult.setCode(SUCCESS_CODE);
-		return baseResult;
+		List<CommentBean> dataList = new ArrayList<CommentBean>();
+		try {
+			CommentBean commentBean = jokeService.addComment(jokeId, userId, details);
+			baseResult.setCode(SUCCESS_CODE);
+			dataList.add(commentBean);
+			baseResult.setDataList(dataList);
+			return baseResult;
+		} catch (Exception e) {
+			e.printStackTrace();
+			baseResult.setCode(ERROR_CODE);
+			return baseResult;
+		}
+
 	}
 
 	@RequestMapping("joke/comment/list")

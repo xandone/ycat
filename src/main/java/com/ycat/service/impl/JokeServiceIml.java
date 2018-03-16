@@ -33,12 +33,16 @@ public class JokeServiceIml implements JokeService {
 		for (JokeBean bean : list) {
 			User user = userMapper.selectUserById(bean.getJoke_user_id());
 			List<JokeLikeBean> likeBeans = jokeMapper.selectJokeLikeById(bean.getJoke_id());
+			List<CommentBean> commentBeans = jokeMapper.getJokeCommentById(bean.getJoke_id());
 			if (user != null) {
 				bean.setJoke_user_nick(user.getNickname());
 				bean.setJoke_user_icon(user.getUser_icon());
 			}
 			if (likeBeans != null) {
 				bean.setArticle_like_count(likeBeans.size());
+			}
+			if (commentBeans != null) {
+				bean.setArticle_comment_count(commentBeans.size());
 			}
 		}
 
@@ -79,14 +83,17 @@ public class JokeServiceIml implements JokeService {
 		return likeBeans;
 	}
 
-	public void addComment(String jokeId, String userId, String details) {
+	public CommentBean addComment(String jokeId, String userId, String details) {
 		CommentBean commentBean = new CommentBean();
 		commentBean.setComment_id(IDUtils.RandomId());
 		commentBean.setJoke_id(jokeId);
 		commentBean.setComment_user_id(userId);
 		commentBean.setComment_details(details);
 		commentBean.setComment_date(new Date());
+		
 		jokeMapper.addComment(commentBean);
+		
+		return commentBean;
 
 	}
 
@@ -103,8 +110,6 @@ public class JokeServiceIml implements JokeService {
 		}
 
 		EuDataResult euDataResult = new EuDataResult();
-
-		System.out.println(list.size());
 
 		euDataResult.setRows(list);
 		int total = (int) new PageInfo<CommentBean>(list).getTotal();

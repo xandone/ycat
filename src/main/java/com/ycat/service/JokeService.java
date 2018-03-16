@@ -2,6 +2,7 @@ package com.ycat.service;
 
 import java.util.List;
 
+import com.ycat.pojo.CommentBean;
 import com.ycat.pojo.JokeBean;
 import com.ycat.pojo.JokeLikeBean;
 import com.ycat.pojo.result.EuDataResult;
@@ -16,7 +17,7 @@ public interface JokeService {
 
 	List<JokeLikeBean> selectJokeLikeById(String jokeId);
 
-	void addComment(String jokeId, String userId, String details);
+	CommentBean addComment(String jokeId, String userId, String details)throws Exception;
 
 	EuDataResult getJokeCommentById(int page, int rows,String jokeId);
 }
