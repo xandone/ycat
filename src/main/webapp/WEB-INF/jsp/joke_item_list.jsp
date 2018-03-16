@@ -26,6 +26,9 @@
     		ids.push(sels[i].name);
     	}
     	ids = ids.join(",");
+    	
+    	console.log('值为：：：'+sels);
+    	
     	return ids;
     }
     

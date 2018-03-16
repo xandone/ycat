@@ -15,6 +15,7 @@ import com.ycat.pojo.result.BaseResult;
 import com.ycat.pojo.result.LoginResult;
 import com.ycat.pojo.result.RegistResult;
 import com.ycat.service.RegistService;
+import com.ycat.service.UserService;
 import com.ycat.utils.IDUtils;
 import com.ycat.utils.XString;
 
@@ -22,9 +23,12 @@ import com.ycat.utils.XString;
 public class RegisterController extends BaseController {
 	@Autowired
 	RegistService registService;
+	@Autowired
+	UserService userService;
 
 	public static final String ERROR_CODE_NAME_ERROR = "-1";
 	public static final String ERROR_CODE_NICK_ERROR = "-2";
+	public static final String ERROR_CODE_NO_ONE_ERROR = "-3";
 
 	@RequestMapping(value = "/regist", method = RequestMethod.GET)
 	@ResponseBody
@@ -37,7 +41,7 @@ public class RegisterController extends BaseController {
 		user.setPassword(password);
 		user.setNickname(nickname);
 		user.setUser_id(IDUtils.RandomId());
-		
+
 		System.out.println(IDUtils.RandomId());
 
 		BaseResult baseResult = new BaseResult();
@@ -82,16 +86,21 @@ public class RegisterController extends BaseController {
 			return baseResult;
 		}
 
-		String name_psw = registService.selectPswByName(name);
+		User user = userService.findUserByName(name);
+		if (user == null) {
+			baseResult.setCode(ERROR_CODE_NO_ONE_ERROR);
+			baseResult.setMsg("该账号未注册");
+			return baseResult;
+		}
 
-		if (!password.equals(name_psw)) {
+		if (!password.equals(user.getPassword())) {
 			baseResult.setCode(ERROR_CODE_NAME_ERROR);
 			baseResult.setMsg("账号或密码错误");
 			return baseResult;
 		}
 
-		String name_nick = registService.selectNickByName(name);
-		loginResult.setNickName(name_nick);
+		loginResult.setNickName(user.getName());
+		loginResult.setUserId(user.getUser_id());
 		dataList.add(loginResult);
 		baseResult.setCode(SUCCESS_CODE);
 		baseResult.setMsg("验证成功");

@@ -63,4 +63,9 @@
 		user_icon=#{user_icon} where user_id = #{user_id}
 	</update>
 
+	<select id="findUserByName" parameterType="java.lang.String"
+		resultType="com.ycat.pojo.User">
+		select * from y_user where name = #{name}
+	</select>
+
 </mapper>

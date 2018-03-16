@@ -47,4 +47,9 @@ public class UserServiceIml implements UserService {
 		return user;
 	}
 
+	public User findUserByName(String userName) {
+		User user = userMapper.findUserByName(userName);
+		return user;
+	}
+
 }

@@ -26,4 +26,5 @@ public interface UserMapper {
 
 	void changeUserIocn(Map< String, String>map);
 
+	User findUserByName(String userName);
 }
