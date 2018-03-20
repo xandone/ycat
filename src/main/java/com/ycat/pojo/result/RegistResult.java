@@ -4,14 +4,26 @@ public class RegistResult {
 	// 不加成员变量报错
 	// No serializer found for class comand no properties discovered to create
 	// BeanSerializer
-	private String nickname;
+	private String nickName;
+	private String userId;
 
-	public String getNickname() {
-		return nickname;
+
+
+	public String getNickName() {
+		return nickName;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	
 
 }

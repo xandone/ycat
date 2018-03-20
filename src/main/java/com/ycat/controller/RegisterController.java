@@ -42,8 +42,6 @@ public class RegisterController extends BaseController {
 		user.setNickname(nickname);
 		user.setUser_id(IDUtils.RandomId());
 
-		System.out.println(IDUtils.RandomId());
-
 		BaseResult baseResult = new BaseResult();
 		RegistResult registResult = new RegistResult();
 		List<RegistResult> dataList = new ArrayList<RegistResult>();
@@ -61,6 +59,9 @@ public class RegisterController extends BaseController {
 			baseResult.setMsg("该昵称已存在");
 			return baseResult;
 		}
+		
+		registResult.setUserId(user.getUser_id());
+		registResult.setNickName(user.getNickname());
 
 		registService.addUser(user);
 		dataList.add(registResult);
@@ -99,7 +100,7 @@ public class RegisterController extends BaseController {
 			return baseResult;
 		}
 
-		loginResult.setNickName(user.getName());
+		loginResult.setNickName(user.getNickname());
 		loginResult.setUserId(user.getUser_id());
 		dataList.add(loginResult);
 		baseResult.setCode(SUCCESS_CODE);

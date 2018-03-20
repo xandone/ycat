@@ -25,15 +25,14 @@ public class TestItem {
 
 		UserMapper mapper = context.getBean(UserMapper.class);
 
-		for (int i = 0; i < 4; i++) {
+
 			User user = new User();
-			user.setName("100" + i);
+			user.setName("100");
 			user.setPassword("123");
-			user.setNickname("二虎" + i);
-			user.setUser_id("0001" + i);
+			user.setNickname("二虎");
+			user.setUser_id("0001");
 			mapper.addUser(user);
 
-		}
 	}
 
 	@Test
@@ -88,10 +87,41 @@ public class TestItem {
 		JokeMapper mapper = context.getBean(JokeMapper.class);
 
 		JokeBean jokeBean = new JokeBean();
-		jokeBean.setJoke_id("100");
-		jokeBean.setJoke_user_id("0000");
-		jokeBean.setTitle("登岳阳楼");
-		jokeBean.setContent("昔闻洞庭水，今上岳阳楼。\r\n" + "吴楚东南坼，乾坤日夜浮。\r\n" + "亲朋无一字，老病有孤舟。\r\n" + "戎马关山北，凭轩涕泗流。");
+		jokeBean.setJoke_id("152138655864341");
+		jokeBean.setJoke_user_id("152146249752110");
+		jokeBean.setTitle("兵车行");
+		jokeBean.setContent("车辚辚，马萧萧，行人弓箭各在腰。\n\n"
+            +"爷娘妻子走相送，尘埃不见咸阳桥。\n"+
+            "\n"+
+            "牵衣顿足拦道哭，哭声直上干云霄。\n"+
+            "\n"+
+            "道傍过者问行人，行人但云点行频。\n"+
+            "\n"+
+            "或从十五北防河，便至四十西营田。\n"+
+            "\n"+
+            "去时里正与裹头，归来头白还戍边。\n"+
+            "\n"+
+            "边庭流血成海水，武皇开边意未已。\n"+
+            "\n"+
+            "君不闻汉家山东二百州，千村万落生荆杞。\n"+
+            "\n"+
+            "纵有健妇把锄犁，禾生陇亩无东西。\n"+
+            "\n"+
+            "况复秦兵耐苦战，被驱不异犬与鸡。\n"+
+            "\n"+
+            "长者虽有问，役夫敢申恨？\n"+
+            "\n"+
+            "且如今年冬，未休关西卒。\n"+
+            "\n"+
+            "县官急索租，租税从何出？\n"+
+            "\n"+
+            "信知生男恶，反是生女好。\n"+
+            "\n"+
+            "生女犹得嫁比邻，生男埋没随百草。\n"+
+            "\n"+
+            "君不见，青海头，古来白骨无人收。\n"+
+            "\n"+
+            "新鬼烦冤旧鬼哭，天阴雨湿声啾啾！");
 		jokeBean.setPost_time(new Date());
 		mapper.addJoke(jokeBean);
 
