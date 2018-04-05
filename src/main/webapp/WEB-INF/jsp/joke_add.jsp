@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link href="/js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" charset="utf-8" src="/js/kindeditor-4.1.10/kindeditor-all-min.js"></script>
-<script type="text/javascript" charset="utf-8" src="/js/kindeditor-4.1.10/lang/zh_CN.js"></script>
+<link href="js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" charset="utf-8" src="js/kindeditor-4.1.10/kindeditor-all-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/kindeditor-4.1.10/lang/zh_CN.js"></script>
 <div style="padding: 10px 10px 10px 10px">
 	<form id="itemAddForm" class="itemForm" method="post">
 		<table cellpadding="5">
@@ -24,7 +24,6 @@
 	<div style="padding: 5px">
 		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">提交</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">重置</a>
-		<input type="button"value="登录"onclick="clearbtn()"></input>
 	</div>
 </div>
 <script type="text/javascript">
@@ -34,8 +33,10 @@
 		//创建富文本编辑器
 		itemAddEditor = KindEditor.create("#itemAddForm [name=content]",
 				TT.kingEditorParams);
-	});
+	}); 
 
+	console.log('this is submitForm');
+	
 	/* 待考究
 	html页面调用js文件里的函数，写法必须为submitForm = function (){}形式，其他方式写，html页面会搜索不到该函数。 */
 	//提交表单
