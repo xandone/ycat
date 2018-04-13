@@ -11,7 +11,7 @@
 			</tr>
 			<tr>
 				<td>作者:</td>
-				<td><input class="easyui-textbox" name="joke_user_id" data-options="multiline:true,validType:'length[0,150]'"
+				<td><input readonly="readonly" value="152138655864350" class="easyui-textbox" name="joke_user_id" data-options="multiline:true,validType:'length[0,150]'"
 						style="width: 280px;"></input></td>
 			</tr>
 			<tr>
@@ -41,8 +41,6 @@
 	html页面调用js文件里的函数，写法必须为submitForm = function (){}形式，其他方式写，html页面会搜索不到该函数。 */
 	//提交表单
 	submitForm = function() {
-		$.messager.alert('提示', '111');
-
 		//有效性验证
 		if (!$('#itemAddForm').form('validate')) {
 			$.messager.alert('提示', '表单还未填写完成!');
@@ -57,13 +55,4 @@
 		});
 	}
 
-	clearForm = function() {
-		$.messager.alert('提示', '1111');
-/* 		$('#itemAddForm').form('reset');
-		itemAddEditor.html(''); */
-	}
-	
-	clearbtn=function(){
-		$.messager.alert('提示', '1111');
-	}
 </script>
