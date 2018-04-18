@@ -21,7 +21,7 @@
 	<div data-options="region:'west',title:'菜单',split:true" style="width: 180px;">
 		<ul id="menu" class="easyui-tree" style="margin-top: 10px; margin-left: 5px;">
 			<li>
-				<span>商品管理</span>
+				<span>用户管理</span>
 				<ul>
 					<li data-options="attributes:{'url':'item-list'}">查询用户</li>
 				</ul>

@@ -54,11 +54,6 @@
 			}
 		});
 	}
-	
-	function clearForm() {
-		$('#itemAddForm').form('reset');
-		itemAddEditor.html('');
-		
-	}
+
 
 </script>
