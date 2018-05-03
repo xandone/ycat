@@ -16,4 +16,5 @@ public class HomeController {
 	public String showPage(@PathVariable String page) {
 		return page;
 	}
+	
 }

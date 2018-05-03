@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link href="js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
+
+<!-- 1.以"/"开头的表示绝对地址，即web根目录，比如你用tomcat服务器，那么就是指webapp目录了。
+2.不以"/"开头的表示的是相对地址，即相对于当前这个页面的地址。 -->
 <script type="text/javascript" charset="utf-8" src="js/kindeditor-4.1.10/kindeditor-all-min.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/kindeditor-4.1.10/lang/zh_CN.js"></script>
 <div style="padding: 10px 10px 10px 10px">

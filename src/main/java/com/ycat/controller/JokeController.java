@@ -1,12 +1,16 @@
 package com.ycat.controller;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.net.ftp.FTPClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ycat.pojo.CommentBean;
 import com.ycat.pojo.JokeBean;
@@ -14,6 +18,7 @@ import com.ycat.pojo.JokeLikeBean;
 import com.ycat.pojo.result.BaseResult;
 import com.ycat.pojo.result.EuDataResult;
 import com.ycat.service.JokeService;
+import com.ycat.utils.FtpClientUtils;
 
 @Controller
 public class JokeController extends BaseController {
@@ -123,4 +128,27 @@ public class JokeController extends BaseController {
 
 	}
 
+	@RequestMapping("upload")
+	public BaseResult upImage(@RequestParam(value = "file") MultipartFile file) throws Exception {
+
+		System.out.println("------------上传---图片-----------");
+
+		if (file == null) {
+			System.out.println("------------上传文件为空-----------");
+			return null;
+		}
+		BaseResult baseResult = new BaseResult();
+
+		// 存在ftp图片服务器的路径
+		String path = "www/images/";
+		String filename = file.getOriginalFilename(); // 获得原始的文件名
+		InputStream input = file.getInputStream();
+		System.out.println("------------上传文件名-----------" + filename);
+		FtpClientUtils a = new FtpClientUtils();
+		FTPClient ftp = a.getConnectionFTP("192.168.117.128", 21, "ftpuser", "@@22xiao");
+		a.uploadFile(ftp, path, filename, input);
+		a.closeFTP(ftp);
+
+		return baseResult;
+	}
 }
