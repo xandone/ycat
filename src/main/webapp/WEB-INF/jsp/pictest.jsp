@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form id="add" class="form-horizontal" enctype="multipart/form-data"
-		action="upload" method="post">
+		action="upload.do" method="post">
 		<input type="file" name="file" /> 
 		<input type="submit" value="提交" />
 

@@ -1,10 +1,8 @@
 package com.ycat.controller;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.net.ftp.FTPClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.ycat.config.Config;
 import com.ycat.pojo.CommentBean;
 import com.ycat.pojo.JokeBean;
 import com.ycat.pojo.JokeLikeBean;
@@ -21,8 +18,6 @@ import com.ycat.pojo.result.EuDataResult;
 import com.ycat.pojo.result.FileUpResult;
 import com.ycat.service.ImageService;
 import com.ycat.service.JokeService;
-import com.ycat.utils.FtpClientUtils;
-import com.ycat.utils.IDUtils;
 
 @Controller
 public class JokeController extends BaseController {
@@ -136,6 +131,7 @@ public class JokeController extends BaseController {
 
 	@RequestMapping("upload")
 	public BaseResult upImage(@RequestParam(value = "file") MultipartFile file) throws Exception {
+		System.out.println("upload..............");
 		if (file == null) {
 			System.out.println("上传文件为空");
 			return null;

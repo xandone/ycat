@@ -13,9 +13,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.ycat.mapper.ImageMapper;
 import com.ycat.mapper.JokeMapper;
 import com.ycat.mapper.UserMapper;
 import com.ycat.pojo.CommentBean;
+import com.ycat.pojo.ImageBean;
 import com.ycat.pojo.JokeBean;
 import com.ycat.pojo.JokeLikeBean;
 import com.ycat.pojo.User;
@@ -178,7 +180,20 @@ public class TestItem {
 		a.uploadFile(ftp, path, filename, inputStream);
 		a.closeFTP(ftp);
 		
-
+	}
+	
+	@Test
+	public void addImageList(){
+		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+		ImageMapper mapper = context.getBean(ImageMapper.class);
+		
+		ImageBean imageBean = new ImageBean();
+		imageBean.setImgId(IDUtils.RandomId());
+		imageBean.setImgUrl("www.baidu,ccc");
+		imageBean.setUserId("1234335");
+		imageBean.setPageViews("0");
+		imageBean.setUpTime(new Date());
+		mapper.addImage(imageBean);
 	}
 
 }

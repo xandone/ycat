@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ycat.mapper.ImageMapper">
+	<resultMap id="BaseResultMap" type="com.ycat.pojo.ImageBean">
+		<result column="userId" property="userId" jdbcType="VARCHAR" />
+		<result column="imgId" property="imgId" jdbcType="VARCHAR" />
+		<result column="imgUrl" property="imgUrl" jdbcType="VARCHAR" />
+		<result column="pageViews" property="pageViews" jdbcType="INTEGER" />
+		<result column="upTime" property="upTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<insert id="addImage" parameterType="com.ycat.pojo.ImageBean">
+		insert into y_image
+		(userId,
+		imgId,
+		imgUrl,
+		pageViews,
+		upTime
+		) values
+		(#{userId},
+		#{imgId},
+		#{imgUrl},
+		#{pageViews},
+		#{upTime}
+		)
+	</insert>
+
+	<select id="getImageList" resultMap="BaseResultMap">
+		select * from y_image
+	</select>
+	
+</mapper>
