@@ -12,18 +12,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ycat.config.Config;
 import com.ycat.pojo.CommentBean;
 import com.ycat.pojo.JokeBean;
 import com.ycat.pojo.JokeLikeBean;
 import com.ycat.pojo.result.BaseResult;
 import com.ycat.pojo.result.EuDataResult;
+import com.ycat.pojo.result.FileUpResult;
+import com.ycat.service.ImageService;
 import com.ycat.service.JokeService;
 import com.ycat.utils.FtpClientUtils;
+import com.ycat.utils.IDUtils;
 
 @Controller
 public class JokeController extends BaseController {
 	@Autowired
 	JokeService jokeService;
+	@Autowired
+	ImageService imageService;
 
 	@RequestMapping("/joke/list")
 	@ResponseBody
@@ -130,25 +136,23 @@ public class JokeController extends BaseController {
 
 	@RequestMapping("upload")
 	public BaseResult upImage(@RequestParam(value = "file") MultipartFile file) throws Exception {
-
-		System.out.println("------------上传---图片-----------");
-
 		if (file == null) {
-			System.out.println("------------上传文件为空-----------");
+			System.out.println("上传文件为空");
 			return null;
 		}
 		BaseResult baseResult = new BaseResult();
+		List<FileUpResult> dataList = new ArrayList<>();
+		FileUpResult fileUpResult = imageService.upfile(file);
 
-		// 存在ftp图片服务器的路径
-		String path = "www/images/";
-		String filename = file.getOriginalFilename(); // 获得原始的文件名
-		InputStream input = file.getInputStream();
-		System.out.println("------------上传文件名-----------" + filename);
-		FtpClientUtils a = new FtpClientUtils();
-		FTPClient ftp = a.getConnectionFTP("192.168.117.128", 21, "ftpuser", "@@22xiao");
-		a.uploadFile(ftp, path, filename, input);
-		a.closeFTP(ftp);
+		if (fileUpResult != null) {
+			baseResult.setCode(SUCCESS_CODE);
+			dataList.add(fileUpResult);
+			baseResult.setDataList(dataList);
+		} else {
+			baseResult.setCode(ERROR_CODE);
+		}
 
 		return baseResult;
+
 	}
 }
