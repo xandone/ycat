@@ -1,7 +1,6 @@
 package com.ycat.controller;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ycat.pojo.ImageBean;
 import com.ycat.pojo.result.BaseResult;
 import com.ycat.pojo.result.EuDataResult;
-import com.ycat.pojo.result.FileUpResult;
 import com.ycat.service.ImageService;
-import com.ycat.utils.IDUtils;
 
 @Controller
 public class ImageController extends BaseController {
@@ -29,7 +26,6 @@ public class ImageController extends BaseController {
 	public EuDataResult getJokeList(Integer page, Integer rows) {
 		EuDataResult euDataResult = imageService.getImageList(page, rows);
 		return euDataResult;
-
 	}
 
 	@RequestMapping("upload.do")
