@@ -30,11 +30,12 @@ public class ImageController extends BaseController {
 
 	@RequestMapping("upload.do")
 	public BaseResult upfileByUser(@RequestParam(value = "file") MultipartFile file, String userId) throws Exception {
-		System.out.println("upload.do..............");
-
+		
 		if (userId == null || userId == "") {
-			userId = "152146249752110";
+			userId = "123456";
 		}
+
+		System.out.println(userId);
 
 		if (file == null) {
 			System.out.println("上传文件为空");

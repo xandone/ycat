@@ -24,7 +24,7 @@ public interface UserMapper {
 
 	void deleteUser(String name);
 
-	void changeUserIocn(Map< String, String>map);
+	void changeUserIcon(Map<String, String> map);
 
 	User findUserByName(String userName);
 }

@@ -73,7 +73,7 @@ public class TestItem {
 	}
 
 	@Test
-	public void changeUserIocn() {
+	public void changeUserIcon() {
 		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
 
 		UserMapper mapper = context.getBean(UserMapper.class);
@@ -81,9 +81,9 @@ public class TestItem {
 		Map<String, String> map = new HashMap();
 		map.put("user_icon",
 				"https://upload-images.jianshu.io/upload_images/2518499-87cb6cb05233b36d.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
-		map.put("user_id", "0001");
+		map.put("user_id", "152138655864350");
 
-		mapper.changeUserIocn(map);
+		mapper.changeUserIcon(map);
 	}
 
 	@Test

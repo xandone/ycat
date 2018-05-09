@@ -58,7 +58,7 @@
 		name=#{name}
 	</delete>
 
-	<update id="changeUserIocn" parameterType="java.util.Map">
+	<update id="changeUserIcon" parameterType="java.util.Map">
 		update y_user set
 		user_icon=#{user_icon} where user_id = #{user_id}
 	</update>

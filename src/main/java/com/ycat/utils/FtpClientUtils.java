@@ -41,9 +41,7 @@ public class FtpClientUtils {
 			ftp.login(userName, passWord);
 			if (!FTPReply.isPositiveCompletion(ftp.getReplyCode())) {
 				ftp.disconnect();
-				System.out.println("连接服务器失败");
 			}
-			System.out.println("登陆服务器成功");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
