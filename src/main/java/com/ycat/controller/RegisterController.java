@@ -59,7 +59,7 @@ public class RegisterController extends BaseController {
 			baseResult.setMsg("该昵称已存在");
 			return baseResult;
 		}
-		
+
 		registResult.setUserId(user.getUser_id());
 		registResult.setNickName(user.getNickname());
 
@@ -102,6 +102,7 @@ public class RegisterController extends BaseController {
 
 		loginResult.setNickName(user.getNickname());
 		loginResult.setUserId(user.getUser_id());
+		loginResult.setIconUrl(user.getUser_icon());
 		dataList.add(loginResult);
 		baseResult.setCode(SUCCESS_CODE);
 		baseResult.setMsg("验证成功");

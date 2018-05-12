@@ -15,6 +15,7 @@ import com.ycat.pojo.User;
 import com.ycat.pojo.result.BaseResult;
 import com.ycat.pojo.result.DeleteResult;
 import com.ycat.pojo.result.EuDataResult;
+import com.ycat.pojo.result.LoginResult;
 import com.ycat.service.UserService;
 
 @Controller
@@ -47,6 +48,7 @@ public class UserController extends BaseController {
 	}
 
 	@RequestMapping("/user/upIcon")
+	@ResponseBody
 	public BaseResult upfileByUser(@RequestParam(value = "file") MultipartFile file, String userId) throws Exception {
 
 		if (userId == null || userId == "") {
@@ -60,17 +62,20 @@ public class UserController extends BaseController {
 			return null;
 		}
 		BaseResult baseResult = new BaseResult();
-		List<User> dataList = new ArrayList<>();
+		List<LoginResult> dataList = new ArrayList<>();
 		User user = userService.addIcon(file, userId);
+
+		LoginResult loginResult = new LoginResult();
+		loginResult.setIconUrl(user.getUser_icon());
 
 		if (user != null) {
 			baseResult.setCode(SUCCESS_CODE);
-			dataList.add(user);
+			dataList.add(loginResult);
 			baseResult.setDataList(dataList);
+
 		} else {
 			baseResult.setCode(ERROR_CODE);
 		}
-
 		return baseResult;
 
 	}
