@@ -51,8 +51,9 @@
 		)
 	</insert>
 
+	<!-- asc 按升序排列 (不用写，默认使用这个) desc 按降序排列 -->
 	<select id="getJokeList" resultMap="BaseResultMap">
-		select * from y_joke
+		select * from y_joke order by id desc
 	</select>
 
 	<select id="selectJokeLikeById" resultMap="JokeLikeMap">
@@ -88,7 +89,7 @@
 
 	<select id="getJokeCommentById" resultMap="JokeCommentMap">
 		select * from
-		y_joke_comment where joke_id = #{joke_id}
+		y_joke_comment where joke_id = #{joke_id} order by id desc
 	</select>
 
 

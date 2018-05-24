@@ -48,8 +48,6 @@ public class JokeServiceIml implements JokeService {
 
 		EuDataResult euDataResult = new EuDataResult();
 
-		System.out.println(list.size());
-
 		euDataResult.setRows(list);
 		int total = (int) new PageInfo<JokeBean>(list).getTotal();
 

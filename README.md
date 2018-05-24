@@ -14,11 +14,11 @@
 
 ### 项目部署
 #### 版本
-**tomcat** 9.0.0 <br/>
-**maven** 3.5.0 <br/>
-**jdk** 1.8.0 <br/>
-**mysql** 5.7.19 <br/>
-**spring** 4.1.3 <br/>
-**mybatis** 3.2.8 <br/>
-**os**  CentOs 6.5 <br/>
-**nginx**  1.12.2 <br/>
+**tomcat**   9.0.0 <br/>
+**maven**    3.5.0 <br/>
+**jdk**      1.8.0 <br/>
+**mysql**    5.7.19 <br/>
+**spring**   4.1.3 <br/>
+**mybatis**  3.2.8 <br/>
+**os**       CentOs 6.5 <br/>
+**nginx**    1.12.2 <br/>

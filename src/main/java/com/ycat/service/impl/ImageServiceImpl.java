@@ -34,7 +34,7 @@ public class ImageServiceImpl implements ImageService {
 
 		InputStream input = file.getInputStream();
 		FtpClientUtils a = new FtpClientUtils();
-		FTPClient ftp = a.getConnectionFTP("192.168.117.128", 21, "ftpuser", "@@22xiao");
+		FTPClient ftp = a.getConnectionFTP(Config.FTP_IP, 21, "ftpuser", "@@22xiao");
 		boolean success = a.uploadFile(ftp, Config.FTP_IMAGE_PATH, newName, input);
 
 		if (success) {
@@ -57,7 +57,7 @@ public class ImageServiceImpl implements ImageService {
 
 		InputStream input = file.getInputStream();
 		FtpClientUtils a = new FtpClientUtils();
-		FTPClient ftp = a.getConnectionFTP("192.168.117.128", 21, "ftpuser", "@@22xiao");
+		FTPClient ftp = a.getConnectionFTP(Config.FTP_IP, 21, "ftpuser", "@@22xiao");
 		boolean success = a.uploadFile(ftp, Config.FTP_IMAGE_PATH, newName, input);
 
 		if (success) {
