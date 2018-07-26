@@ -2,6 +2,7 @@ package com.ycat.service.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,6 +72,11 @@ public class JokeServiceIml implements JokeService {
 		return jokeBean;
 	}
 
+	public JokeBean selectJokeBeanById(String jokeId) {
+		JokeBean jokeBean = jokeMapper.selectJokeBeanById(jokeId);
+		return jokeBean;
+	}
+
 	public void thumbsJoke(String jokeId, String userId) {
 		JokeLikeBean jokeLikeBean = new JokeLikeBean(jokeId, userId);
 		jokeMapper.thumbsJoke(jokeLikeBean);
@@ -88,9 +94,14 @@ public class JokeServiceIml implements JokeService {
 		commentBean.setComment_user_id(userId);
 		commentBean.setComment_details(details);
 		commentBean.setComment_date(new Date());
-		
+
 		jokeMapper.addComment(commentBean);
-		
+		User user = userMapper.selectUserById(userId);
+		if (user != null) {
+			commentBean.setComment_nick(user.getNickname());
+			commentBean.setComment_icon(user.getUser_icon());
+		}
+
 		return commentBean;
 
 	}
@@ -115,6 +126,11 @@ public class JokeServiceIml implements JokeService {
 		euDataResult.setTotal(total);
 
 		return euDataResult;
+	}
+
+	@Override
+	public void changeJokeLikeCount(Map<String, Object> map) {
+		jokeMapper.changeJokeLikeCount(map);
 	}
 
 }

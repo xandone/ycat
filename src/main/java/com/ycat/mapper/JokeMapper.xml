@@ -61,6 +61,13 @@
 		y_joke_like
 		where joke_id = #{joke_id}
 	</select>
+	
+	<select id="selectJokeBeanById" parameterType="java.lang.String"
+	resultType="com.ycat.pojo.JokeBean">
+		select * from
+		y_joke
+		where joke_id = #{joke_id}
+	</select>
 
 	<insert id="thumbsJoke" parameterType="com.ycat.pojo.JokeLikeBean">
 		insert into y_joke_like(
@@ -91,6 +98,10 @@
 		select * from
 		y_joke_comment where joke_id = #{joke_id} order by id desc
 	</select>
-
+	
+	<update id="changeJokeLikeCount" parameterType="java.util.Map">
+		update y_joke set
+		article_like_count=#{article_like_count} where joke_id = #{joke_id}
+	</update>
 
 </mapper>

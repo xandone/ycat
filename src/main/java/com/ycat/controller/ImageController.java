@@ -28,20 +28,19 @@ public class ImageController extends BaseController {
 		return euDataResult;
 	}
 
-	@RequestMapping("upload.do")
+	@RequestMapping("/upImage")
+	@ResponseBody
 	public BaseResult upfileByUser(@RequestParam(value = "file") MultipartFile file, String userId) throws Exception {
-		
+		BaseResult baseResult = new BaseResult();
 		if (userId == null || userId == "") {
-			userId = "123456";
+			System.out.println("id为空");
+			return baseResult;
 		}
-
-		System.out.println(userId);
 
 		if (file == null) {
 			System.out.println("上传文件为空");
-			return null;
+			return baseResult;
 		}
-		BaseResult baseResult = new BaseResult();
 		List<ImageBean> dataList = new ArrayList<>();
 		ImageBean imageBean = imageService.upfileByUser(file, userId);
 

@@ -13,6 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.ycat.config.Config;
 import com.ycat.mapper.ImageMapper;
 import com.ycat.mapper.JokeMapper;
 import com.ycat.mapper.UserMapper;
@@ -170,13 +171,13 @@ public class TestItem {
 	@Test
 	public void addPic() throws FileNotFoundException {
 		
-		FileInputStream inputStream = new FileInputStream(new File("D:\\1.png"));
+		FileInputStream inputStream = new FileInputStream(new File("D:\\1.jpg"));
 		String path = "www/images/";
 //		String path = "home/ftpuser/www/images/";//使用这个路径，上传的图片停留在home/ftpuser，changeWorkingDirectory永远返回false
 		String filename = "bcd.jpg"; // 获得原始的文件名
 		System.out.println("------------上传文件名-----------" + filename);
 		FtpClientUtils a = new FtpClientUtils();
-		FTPClient ftp = a.getConnectionFTP("192.168.117.128", 21, "ftpuser", "@@22xiao");
+		FTPClient ftp = a.getConnectionFTP(Config.FTP_IP, 21, "ftpuser", "@@22xiao");
 		a.uploadFile(ftp, path, filename, inputStream);
 		a.closeFTP(ftp);
 		

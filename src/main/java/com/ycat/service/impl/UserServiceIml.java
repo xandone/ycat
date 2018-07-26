@@ -36,11 +36,11 @@ public class UserServiceIml implements UserService {
 		List<User> list = userMapper.getUserList();
 
 		EuDataResult euDataResult = new EuDataResult();
-
 		euDataResult.setRows(list);
 		int total = (int) new PageInfo<User>(list).getTotal();
-
 		euDataResult.setTotal(total);
+		euDataResult.setMsg("成功");
+		euDataResult.setCode(200);
 
 		return euDataResult;
 

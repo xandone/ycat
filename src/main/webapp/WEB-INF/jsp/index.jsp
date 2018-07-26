@@ -4,9 +4,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ycat后台管理系统</title>
-<link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/gray/easyui.css" />
 <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/icon.css" />
-<link rel="stylesheet" type="text/css" href="css/taotao.css" />
+<link rel="stylesheet" type="text/css" href="css/cat.css" />
 <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
@@ -17,7 +17,7 @@
 }
 </style>
 </head>
-<body class="easyui-layout">
+<body class="easyui-layout" >
 	<div data-options="region:'west',title:'菜单',split:true" style="width: 180px;">
 		<ul id="menu" class="easyui-tree" style="margin-top: 10px; margin-left: 5px;">
 			<li>

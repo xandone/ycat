@@ -1,7 +1,9 @@
 package com.ycat.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -68,6 +70,10 @@ public class JokeController extends BaseController {
 			// 已点赞
 			baseResult.setCode(ERROR_CODE);
 		} else {
+			Map<String, Object> map = new HashMap<>();
+			map.put("joke_id", jokeId);
+			map.put("article_like_count", 1);
+			jokeService.changeJokeLikeCount(map);
 			//
 			jokeService.thumbsJoke(jokeId, jokeUserId);
 			baseResult.setCode(SUCCESS_CODE);
@@ -81,6 +87,11 @@ public class JokeController extends BaseController {
 	public BaseResult getThumbsJoke(String jokeId, String jokeUserId) {
 		BaseResult baseResult = new BaseResult();
 		boolean isThumbs = false;
+
+		JokeBean jokeBean = jokeService.selectJokeBeanById(jokeId);
+		List<JokeBean> data = new ArrayList<>();
+		data.add(jokeBean);
+
 		List<JokeLikeBean> likeBeans = jokeService.selectJokeLikeById(jokeId);
 		for (int i = 0; i < likeBeans.size(); i++) {
 			if (jokeUserId.equals(likeBeans.get(i).getJoke_user_id())) {
@@ -95,7 +106,7 @@ public class JokeController extends BaseController {
 		} else {
 			baseResult.setCode(SUCCESS_CODE);
 		}
-
+		baseResult.setDataList(data);
 		return baseResult;
 	}
 
