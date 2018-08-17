@@ -10,19 +10,19 @@ import com.ycat.pojo.result.EuDataResult;
 
 public interface JokeService {
 
-	EuDataResult getJokeList(int page, int rows);
+	EuDataResult getJokeList(int page, int rows) throws Exception;
 
-	JokeBean addJoke(String title, String joke_user_id, String content);
-	
-	JokeBean selectJokeBeanById(String jokeId);
+	JokeBean addJoke(String title, String joke_user_id, String content) throws Exception;
 
-	void thumbsJoke(String jokeId, String userId);
+	JokeBean selectJokeBeanById(String jokeId) throws Exception;
 
-	List<JokeLikeBean> selectJokeLikeById(String jokeId);
+	void thumbsJoke(String jokeId, String userId) throws Exception;
 
-	CommentBean addComment(String jokeId, String userId, String details)throws Exception;
+	List<JokeLikeBean> selectJokeLikeById(String jokeId) throws Exception;
 
-	EuDataResult getJokeCommentById(int page, int rows,String jokeId);
-	
-	void changeJokeLikeCount(Map<String, Object> map);
+	CommentBean addComment(String jokeId, String userId, String details) throws Exception;
+
+	EuDataResult getJokeCommentById(int page, int rows, String jokeId) throws Exception;
+
+	void changeJokeLikeCount(Map<String, Object> map) throws Exception;
 }

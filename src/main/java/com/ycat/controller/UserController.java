@@ -25,7 +25,7 @@ public class UserController extends BaseController {
 
 	@RequestMapping("/item/list")
 	@ResponseBody
-	public EuDataResult getUserList(Integer page, Integer rows) {
+	public EuDataResult getUserList(Integer page, Integer rows)throws Exception{
 
 		EuDataResult euDataResult = userService.getUserList(page, rows);
 

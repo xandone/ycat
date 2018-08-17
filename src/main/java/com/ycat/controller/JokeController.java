@@ -30,7 +30,7 @@ public class JokeController extends BaseController {
 
 	@RequestMapping("/joke/list")
 	@ResponseBody
-	public EuDataResult getJokeList(Integer page, Integer rows) {
+	public EuDataResult getJokeList(Integer page, Integer rows) throws Exception {
 
 		EuDataResult euDataResult = jokeService.getJokeList(page, rows);
 
@@ -40,7 +40,7 @@ public class JokeController extends BaseController {
 
 	@RequestMapping("/joke/add")
 	@ResponseBody
-	public BaseResult addJoke(String title, String joke_user_id, String content) {
+	public BaseResult addJoke(String title, String joke_user_id, String content) throws Exception {
 
 		JokeBean jokeBean = jokeService.addJoke(title, joke_user_id, content);
 		BaseResult baseResult = new BaseResult();
@@ -55,7 +55,7 @@ public class JokeController extends BaseController {
 
 	@RequestMapping("joke/thumbs")
 	@ResponseBody
-	public BaseResult thumbsJoke(String jokeId, String jokeUserId) {
+	public BaseResult thumbsJoke(String jokeId, String jokeUserId) throws Exception {
 		BaseResult baseResult = new BaseResult();
 		boolean isThumbs = false;
 		List<JokeLikeBean> likeBeans = jokeService.selectJokeLikeById(jokeId);
@@ -84,7 +84,7 @@ public class JokeController extends BaseController {
 
 	@RequestMapping("joke/thumbs/self")
 	@ResponseBody
-	public BaseResult getThumbsJoke(String jokeId, String jokeUserId) {
+	public BaseResult getThumbsJoke(String jokeId, String jokeUserId) throws Exception {
 		BaseResult baseResult = new BaseResult();
 		boolean isThumbs = false;
 
@@ -112,7 +112,7 @@ public class JokeController extends BaseController {
 
 	@RequestMapping("joke/comment/add")
 	@ResponseBody
-	public BaseResult addComment(String jokeId, String userId, String details) {
+	public BaseResult addComment(String jokeId, String userId, String details) throws Exception {
 
 		BaseResult baseResult = new BaseResult();
 		List<CommentBean> dataList = new ArrayList<CommentBean>();
@@ -132,7 +132,7 @@ public class JokeController extends BaseController {
 
 	@RequestMapping("joke/comment/list")
 	@ResponseBody
-	public EuDataResult getJokeCommentById(Integer page, Integer rows, String jokeId) {
+	public EuDataResult getJokeCommentById(Integer page, Integer rows, String jokeId) throws Exception {
 
 		EuDataResult euDataResult = jokeService.getJokeCommentById(page, rows, jokeId);
 

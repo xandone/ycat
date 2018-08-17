@@ -8,13 +8,13 @@ import com.ycat.pojo.result.EuDataResult;
 
 public interface UserService {
 
-	EuDataResult getUserList(int page, int rows);
+	EuDataResult getUserList(int page, int rows) throws Exception;
 
 	DeleteResult deleteUser(String name) throws Exception;
 
-	User selectUserById(String userId);
+	User selectUserById(String userId) throws Exception;
 
-	User findUserByName(String userId);
+	User findUserByName(String userId) throws Exception;
 
 	User addIcon(MultipartFile file, String userId) throws Exception;
 

@@ -23,7 +23,7 @@ public class ImageController extends BaseController {
 
 	@RequestMapping("/imagelist")
 	@ResponseBody
-	public EuDataResult getJokeList(Integer page, Integer rows) {
+	public EuDataResult getJokeList(Integer page, Integer rows)throws Exception {
 		EuDataResult euDataResult = imageService.getImageList(page, rows);
 		return euDataResult;
 	}

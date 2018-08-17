@@ -34,7 +34,7 @@ public class RegisterController extends BaseController {
 	@ResponseBody
 	public BaseResult regist(@RequestParam(value = "name", required = true) String name,
 			@RequestParam(value = "password", required = true) String password,
-			@RequestParam(value = "nickname", required = true) String nickname) {
+			@RequestParam(value = "nickname", required = true) String nickname) throws Exception {
 
 		User user = new User();
 		user.setName(name);
@@ -75,7 +75,7 @@ public class RegisterController extends BaseController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	@ResponseBody
 	public BaseResult login(@RequestParam(value = "name", required = true) String name,
-			@RequestParam(value = "password", required = true) String password) {
+			@RequestParam(value = "password", required = true) String password) throws Exception {
 
 		BaseResult baseResult = new BaseResult();
 		LoginResult loginResult = new LoginResult();

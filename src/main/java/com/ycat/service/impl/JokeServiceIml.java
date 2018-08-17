@@ -26,7 +26,7 @@ public class JokeServiceIml implements JokeService {
 	@Autowired
 	UserMapper userMapper;
 
-	public EuDataResult getJokeList(int page, int rows) {
+	public EuDataResult getJokeList(int page, int rows) throws Exception {
 		PageHelper.startPage(page, rows);
 
 		List<JokeBean> list = jokeMapper.getJokeList();
@@ -48,16 +48,17 @@ public class JokeServiceIml implements JokeService {
 		}
 
 		EuDataResult euDataResult = new EuDataResult();
-
 		euDataResult.setRows(list);
 		int total = (int) new PageInfo<JokeBean>(list).getTotal();
 
 		euDataResult.setTotal(total);
+		euDataResult.setMsg("成功");
+		euDataResult.setCode(200);
 
 		return euDataResult;
 	}
 
-	public JokeBean addJoke(String title, String joke_user_id, String content) {
+	public JokeBean addJoke(String title, String joke_user_id, String content) throws Exception {
 		JokeBean jokeBean = new JokeBean();
 
 		jokeBean.setJoke_id(IDUtils.RandomId());
@@ -72,22 +73,22 @@ public class JokeServiceIml implements JokeService {
 		return jokeBean;
 	}
 
-	public JokeBean selectJokeBeanById(String jokeId) {
+	public JokeBean selectJokeBeanById(String jokeId) throws Exception {
 		JokeBean jokeBean = jokeMapper.selectJokeBeanById(jokeId);
 		return jokeBean;
 	}
 
-	public void thumbsJoke(String jokeId, String userId) {
+	public void thumbsJoke(String jokeId, String userId) throws Exception {
 		JokeLikeBean jokeLikeBean = new JokeLikeBean(jokeId, userId);
 		jokeMapper.thumbsJoke(jokeLikeBean);
 	}
 
-	public List<JokeLikeBean> selectJokeLikeById(String jokeId) {
+	public List<JokeLikeBean> selectJokeLikeById(String jokeId) throws Exception {
 		List<JokeLikeBean> likeBeans = jokeMapper.selectJokeLikeById(jokeId);
 		return likeBeans;
 	}
 
-	public CommentBean addComment(String jokeId, String userId, String details) {
+	public CommentBean addComment(String jokeId, String userId, String details) throws Exception {
 		CommentBean commentBean = new CommentBean();
 		commentBean.setComment_id(IDUtils.RandomId());
 		commentBean.setJoke_id(jokeId);
@@ -106,7 +107,7 @@ public class JokeServiceIml implements JokeService {
 
 	}
 
-	public EuDataResult getJokeCommentById(int page, int rows, String jokeId) {
+	public EuDataResult getJokeCommentById(int page, int rows, String jokeId) throws Exception {
 		PageHelper.startPage(page, rows);
 		List<CommentBean> list = jokeMapper.getJokeCommentById(jokeId);
 
@@ -129,7 +130,7 @@ public class JokeServiceIml implements JokeService {
 	}
 
 	@Override
-	public void changeJokeLikeCount(Map<String, Object> map) {
+	public void changeJokeLikeCount(Map<String, Object> map) throws Exception {
 		jokeMapper.changeJokeLikeCount(map);
 	}
 

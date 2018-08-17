@@ -79,7 +79,7 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	@Override
-	public EuDataResult getImageList(int page, int rows) {
+	public EuDataResult getImageList(int page, int rows) throws Exception {
 		PageHelper.startPage(page, rows);
 		List<ImageBean> list = imageMapper.getImageList();
 		EuDataResult euDataResult = new EuDataResult();

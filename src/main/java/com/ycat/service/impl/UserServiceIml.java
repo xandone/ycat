@@ -1,13 +1,11 @@
 package com.ycat.service.impl;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.net.ftp.FTPClient;
-import org.apache.http.util.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,7 +26,7 @@ public class UserServiceIml implements UserService {
 	@Autowired
 	UserMapper userMapper;
 
-	public EuDataResult getUserList(int page, int rows) {
+	public EuDataResult getUserList(int page, int rows) throws Exception {
 		// TODO Auto-generated method stub
 
 		PageHelper.startPage(page, rows);
@@ -46,18 +44,18 @@ public class UserServiceIml implements UserService {
 
 	}
 
-	public DeleteResult deleteUser(String name) {
+	public DeleteResult deleteUser(String name) throws Exception {
 		userMapper.deleteUser(name);
 		DeleteResult deleteResult = new DeleteResult();
 		return deleteResult;
 	}
 
-	public User selectUserById(String userId) {
+	public User selectUserById(String userId) throws Exception {
 		User user = userMapper.selectUserById(userId);
 		return user;
 	}
 
-	public User findUserByName(String userName) {
+	public User findUserByName(String userName) throws Exception {
 		User user = userMapper.findUserByName(userName);
 		return user;
 	}

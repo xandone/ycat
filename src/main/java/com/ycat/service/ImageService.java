@@ -11,7 +11,7 @@ public interface ImageService {
 	FileUpResult upfile(MultipartFile file) throws Exception;
 
 	ImageBean upfileByUser(MultipartFile file, String userId) throws Exception;
-	
-	EuDataResult getImageList(int page, int rows);
+
+	EuDataResult getImageList(int page, int rows) throws Exception;
 
 }

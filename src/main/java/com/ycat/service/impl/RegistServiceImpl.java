@@ -12,18 +12,18 @@ public class RegistServiceImpl implements RegistService {
 	@Autowired
 	UserMapper userMapper;
 
-	public Integer selectUserByName(String name) {
+	public Integer selectUserByName(String name) throws Exception {
 		Integer id = userMapper.selectUserByName(name);
 		return id;
 	}
 
-	public Integer selectUserByNick(String nickname) {
+	public Integer selectUserByNick(String nickname) throws Exception {
 		Integer id = userMapper.selectUserByNick(nickname);
 		return id;
 	}
 
-	public String selectPswByName(String name) {
-		String psw=userMapper.selectPswByName(name);
+	public String selectPswByName(String name) throws Exception {
+		String psw = userMapper.selectPswByName(name);
 		return psw;
 	}
 
@@ -31,8 +31,8 @@ public class RegistServiceImpl implements RegistService {
 		userMapper.addUser(user);
 	}
 
-	public String selectNickByName(String name) {
-		String nick=userMapper.selectNickByName(name);
+	public String selectNickByName(String name) throws Exception {
+		String nick = userMapper.selectNickByName(name);
 		return nick;
 	}
 
