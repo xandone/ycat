@@ -6,6 +6,7 @@ import java.util.Map;
 import com.ycat.pojo.CommentBean;
 import com.ycat.pojo.JokeBean;
 import com.ycat.pojo.JokeLikeBean;
+import com.ycat.pojo.result.DeleteResult;
 import com.ycat.pojo.result.EuDataResult;
 
 public interface JokeService {
@@ -25,4 +26,7 @@ public interface JokeService {
 	EuDataResult getJokeCommentById(int page, int rows, String jokeId) throws Exception;
 
 	void changeJokeLikeCount(Map<String, Object> map) throws Exception;
+	
+	DeleteResult deleteJokeById(String jokeId)throws Exception;
+
 }

@@ -15,6 +15,7 @@ import com.ycat.pojo.CommentBean;
 import com.ycat.pojo.JokeBean;
 import com.ycat.pojo.JokeLikeBean;
 import com.ycat.pojo.User;
+import com.ycat.pojo.result.DeleteResult;
 import com.ycat.pojo.result.EuDataResult;
 import com.ycat.service.JokeService;
 import com.ycat.utils.IDUtils;
@@ -132,6 +133,13 @@ public class JokeServiceIml implements JokeService {
 	@Override
 	public void changeJokeLikeCount(Map<String, Object> map) throws Exception {
 		jokeMapper.changeJokeLikeCount(map);
+	}
+
+	@Override
+	public DeleteResult deleteJokeById(String jokeId) throws Exception {
+		DeleteResult deleteResult = new DeleteResult();
+		jokeMapper.deleteJokeById(jokeId);
+		return deleteResult;
 	}
 
 }

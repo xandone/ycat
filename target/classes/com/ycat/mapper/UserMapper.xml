@@ -55,7 +55,7 @@
 
 	<delete id="deleteUser" parameterType="String">
 		delete from y_user where
-		name=#{name}
+		name= #{name}
 	</delete>
 
 	<update id="changeUserIcon" parameterType="java.util.Map">

@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,6 +17,7 @@ import com.ycat.pojo.CommentBean;
 import com.ycat.pojo.JokeBean;
 import com.ycat.pojo.JokeLikeBean;
 import com.ycat.pojo.result.BaseResult;
+import com.ycat.pojo.result.DeleteResult;
 import com.ycat.pojo.result.EuDataResult;
 import com.ycat.pojo.result.FileUpResult;
 import com.ycat.service.ImageService;
@@ -112,7 +114,7 @@ public class JokeController extends BaseController {
 
 	@RequestMapping("joke/comment/add")
 	@ResponseBody
-	public BaseResult addComment(String jokeId, String userId, String details) throws Exception {
+	public BaseResult addComment(String jokeId, String userId, String details) {
 
 		BaseResult baseResult = new BaseResult();
 		List<CommentBean> dataList = new ArrayList<CommentBean>();
@@ -161,5 +163,19 @@ public class JokeController extends BaseController {
 
 		return baseResult;
 
+	}
+
+	@RequestMapping(value = "/rest/joke/delete", method = RequestMethod.POST)
+	@ResponseBody
+	public DeleteResult deleteJokeById(String jokeId) {
+		DeleteResult deleteResult = null;
+		try {
+			deleteResult = jokeService.deleteJokeById(jokeId);
+			deleteResult.setCode(SUCCESS_CODE);
+			return deleteResult;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return deleteResult;
+		}
 	}
 }

@@ -51,13 +51,25 @@
 							//监听工具条
 							table.on('tool(andone)',
 									function(obj) {
-										console.log(obj);
 										var data = obj.data;
 										if (obj.event === 'detail') {
 											layer.msg('ID：' + data.joke_user_nick+ ' 的查看操作');
 										} else if (obj.event === 'del') {
 											layer.confirm('真的删除行么', function(index) {
-												obj.del();
+												$.ajax({
+							                		type:'post',
+							                	    url:'/ycat/rest/joke/delete',
+							                	    dataType:'json',
+							                	    data:"jokeId="+data.joke_id,
+							                	    success: function (data) {
+							                		      obj.del();
+							            			      layer.msg('删除成功');
+							                	 },
+							                        error:function(){
+							                		      layer.msg('删除失败');
+							                	 }
+							                	});
+												
 												layer.close(index);
 											});
 										} else if (obj.event === 'edit') {

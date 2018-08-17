@@ -23,4 +23,6 @@ public interface JokeMapper {
 	List<CommentBean> getJokeCommentById(String jokeId);
 	
 	void changeJokeLikeCount(Map<String, Object> map);
+	
+	void deleteJokeById(String id);
 }

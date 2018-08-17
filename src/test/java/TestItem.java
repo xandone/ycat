@@ -28,7 +28,7 @@ import com.ycat.utils.IDUtils;
 public class TestItem {
 
 	@Test
-	public void getItemBy() {
+	public void addUser() {
 		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
 
 		UserMapper mapper = context.getBean(UserMapper.class);

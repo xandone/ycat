@@ -53,7 +53,8 @@
 
 	<!-- asc 按升序排列 (不用写，默认使用这个) desc 按降序排列 -->
 	<select id="getJokeList" resultMap="BaseResultMap">
-		select * from y_joke order by id desc
+		select * from y_joke order by
+		id desc
 	</select>
 
 	<select id="selectJokeLikeById" resultMap="JokeLikeMap">
@@ -61,9 +62,9 @@
 		y_joke_like
 		where joke_id = #{joke_id}
 	</select>
-	
+
 	<select id="selectJokeBeanById" parameterType="java.lang.String"
-	resultType="com.ycat.pojo.JokeBean">
+		resultType="com.ycat.pojo.JokeBean">
 		select * from
 		y_joke
 		where joke_id = #{joke_id}
@@ -98,10 +99,14 @@
 		select * from
 		y_joke_comment where joke_id = #{joke_id} order by id desc
 	</select>
-	
+
 	<update id="changeJokeLikeCount" parameterType="java.util.Map">
 		update y_joke set
 		article_like_count=#{article_like_count} where joke_id = #{joke_id}
 	</update>
+
+	<delete id="deleteJokeById">
+		delete from y_joke where joke_id= #{joke_id};
+	</delete>
 
 </mapper>
