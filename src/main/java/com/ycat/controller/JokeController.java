@@ -35,7 +35,6 @@ public class JokeController extends BaseController {
 	public EuDataResult getJokeList(Integer page, Integer rows) throws Exception {
 
 		EuDataResult euDataResult = jokeService.getJokeList(page, rows);
-
 		return euDataResult;
 
 	}
