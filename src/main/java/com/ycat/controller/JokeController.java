@@ -177,4 +177,18 @@ public class JokeController extends BaseController {
 			return deleteResult;
 		}
 	}
+	
+	@RequestMapping(value = "/rest/joke/comment/delete", method = RequestMethod.POST)
+	@ResponseBody
+	public DeleteResult deleteJokeCommentById(String commentId) {
+		DeleteResult deleteResult = null;
+		try {
+			deleteResult = jokeService.deleteJokeCommentById(commentId);
+			deleteResult.setCode(SUCCESS_CODE);
+			return deleteResult;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return deleteResult;
+		}
+	}
 }

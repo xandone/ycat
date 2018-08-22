@@ -67,12 +67,12 @@ layui.use('table', function(){
 										if (obj.event === 'detail') {
 											layer.msg('ID：' + data.joke_user_nick+ ' 的查看操作');
 										} else if (obj.event === 'del') {
-											layer.confirm('真的删除行么', function(index) {
+											layer.confirm('真的删除这条评论?', function(index) {
 												$.ajax({
 							                		type:'post',
-							                	    url:'/ycat/rest/joke/delete',
+							                	    url:'/ycat/rest/joke/comment/delete',
 							                	    dataType:'json',
-							                	    data:"jokeId="+data.joke_id,
+							                	    data:"commentId="+data.comment_id,
 							                	    success: function (data) {
 							                		      obj.del();
 							            			      layer.msg('删除成功');
@@ -112,7 +112,8 @@ layui.use('table', function(){
 
 		
 	</script>
-	
+
+ </script>
 	
 	
 </body>

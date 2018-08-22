@@ -52,7 +52,7 @@
 										if (obj.event === 'detail') {
 											layer.msg('ID：' + data.nickname+ ' 的查看操作');
 										} else if (obj.event === 'del') {
-											layer.confirm('真的删除行么', function(index) {
+											layer.confirm('真的删除用户"'+data.nickname+'"吗？', function(index) {
 							                	$.ajax({
 							                		type:'post',
 							                	    url:'/ycat/rest/item/delete',

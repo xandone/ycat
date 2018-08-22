@@ -25,4 +25,6 @@ public interface JokeMapper {
 	void changeJokeLikeCount(Map<String, Object> map);
 	
 	void deleteJokeById(String id);
+	
+	void deleteJokeCommentById(String id);
 }

@@ -28,5 +28,7 @@ public interface JokeService {
 	void changeJokeLikeCount(Map<String, Object> map) throws Exception;
 	
 	DeleteResult deleteJokeById(String jokeId)throws Exception;
+	
+	DeleteResult deleteJokeCommentById(String commentId)throws Exception;
 
 }

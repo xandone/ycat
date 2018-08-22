@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ycat.mapper.JokeMapper">
 	<resultMap id="BaseResultMap" type="com.ycat.pojo.JokeBean">
 		<result column="joke_id" property="joke_id" jdbcType="VARCHAR" />
@@ -107,6 +107,10 @@
 
 	<delete id="deleteJokeById">
 		delete from y_joke where joke_id= #{joke_id};
+	</delete>
+	
+	<delete id="deleteJokeCommentById">
+		delete from y_joke_comment where comment_id= #{comment_id};
 	</delete>
 
 </mapper>

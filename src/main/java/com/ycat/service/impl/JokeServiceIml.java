@@ -142,4 +142,11 @@ public class JokeServiceIml implements JokeService {
 		return deleteResult;
 	}
 
+	@Override
+	public DeleteResult deleteJokeCommentById(String commentId) throws Exception {
+		DeleteResult deleteResult = new DeleteResult();
+		jokeMapper.deleteJokeCommentById(commentId);
+		return deleteResult;
+	}
+
 }

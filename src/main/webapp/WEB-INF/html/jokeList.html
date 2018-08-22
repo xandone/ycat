@@ -55,7 +55,7 @@
 										if (obj.event === 'detail') {
 											layer.msg('ID：' + data.joke_user_nick+ ' 的查看操作');
 										} else if (obj.event === 'del') {
-											layer.confirm('真的删除行么', function(index) {
+											layer.confirm('真的删除《'+data.title+'》吗？', function(index) {
 												$.ajax({
 							                		type:'post',
 							                	    url:'/ycat/rest/joke/delete',

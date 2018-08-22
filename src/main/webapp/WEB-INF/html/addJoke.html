@@ -42,9 +42,9 @@
   <legend>自定义工具栏</legend>
 </fieldset> -->
  
-<div style="margin-bottom: 20px; width: 500px;">
+<!-- <div style="margin-bottom: 20px; width: 500px;">
   <textarea class="layui-textarea" id="LAY_demo2" style="display: none"></textarea>
-</div>  
+</div>   -->
 
 <script type="text/javascript" src="../js/layui/src/layui.js"></script>
 
@@ -69,6 +69,17 @@ layui.use('layedit', function(){
       alert(layedit.getSelection(index));
     }
     ,report:function(){
+    	 var str1 = title.value.replace(/(^\s*)|(\s*$)/g, '');//去除空格;
+    	 var str2 = layedit.getContent(index).replace(/(^\s*)|(\s*$)/g, '');
+         if (str1 == '' || str1 == undefined || str1 == null) {
+             alert('请输入标题');
+        	 return;
+         } 
+         if (str2 == '' || str2 == undefined || str2 == null) {
+             alert('请输入内容');
+        	 return;
+         } 
+    	
     	$.ajax({
     		type:'get',
     	    url:'/ycat/joke/add',
