@@ -11,28 +11,41 @@
 		<button class="layui-btn" data-type="getCheckLength">获取选中数目</button>
 		<button class="layui-btn" data-type="isAll">验证是否全选</button>
 	</div>
-
-	<table class="layui-table"
-		lay-data="{width: 1200, height:500, url:'/ycat/joke/comment/list',page:true,id:'idTest'
-		request: {pageName: 'page',limitName: 'rows'},
-		where: {jokeId: '152714526391970'},
-		response: {statusName: 'code' ,statusCode: 200,msgName: 'msg' ,countName: 'total' ,dataName: 'rows' }}"
-		lay-filter="andone">
-		<thead>
-			<tr>
-				<th lay-data="{type:'checkbox', fixed: 'left'}"></th>
-				<th lay-data="{field:'joke_id', width:150}">段子ID</th>
-				<th lay-data="{field:'comment_id', width:150}">评论ID</th>
-				<th lay-data="{field:'comment_user_id',width:100}">评论者ID</th>
-				<th lay-data="{field:'comment_nick',width:150}">评论者昵称</th>
-				<th lay-data="{field:'comment_details',width:100}">评论详情</th>
-				<th lay-data="{field:'comment_date',width:100}">评论时间</th>
-				<th lay-data="{fixed: 'right', width:178, align:'center', toolbar: '#barDemo'}"></th>
-			</tr>
-		</thead>
-	</table>
+	
+	<table id="commentTb" lay-filter="andone"></table>
 
 <script type="text/javascript" src="../js/layui/src/layui.js"></script>
+
+<script>
+layui.use('table', function(){
+  var table = layui.table;
+  
+  table.render({
+    elem: '#commentTb'
+    ,width:800
+    ,height: 400
+    ,url: '/ycat/joke/comment/list' //数据接口
+    ,page: true //开启分页
+    ,where:{jokeId:parent.jokeId}
+    ,request:{pageName: 'page',limitName: 'rows'}
+    ,response:{
+    	       statusName: 'code' 
+    		  ,msgName: 'msg' 
+    		  ,countName: 'total' 
+    		  ,dataName: 'rows' 
+    		} 
+    ,cols: [[ //表头
+       {type:'checkbox',fixed:'left'}
+      ,{field: 'comment_user_id', title: '评论者ID', width:120}
+      ,{field: 'comment_nick', title: '评论者昵称', width:120} 
+      ,{field: 'comment_details', title: '评论详情', width: 200}
+      ,{field: 'comment_date', title: '评论时间', width: 140}
+      ,{fixed: 'right', width:180, align:'center', toolbar: '#barDemo'}
+    ]]
+  });
+  
+});
+</script>
 
 <script type="text/html" id="barDemo">
   <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
