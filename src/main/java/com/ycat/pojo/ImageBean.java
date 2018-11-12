@@ -9,6 +9,7 @@ public class ImageBean {
 	private Date upTime;
 	private String imgUrl;
 	private String pageViews;// 浏览量
+	private int sizeType;
 
 	public String getUserId() {
 		return userId;
@@ -49,5 +50,15 @@ public class ImageBean {
 	public void setPageViews(String pageViews) {
 		this.pageViews = pageViews;
 	}
+
+	public int getSizeType() {
+		return sizeType;
+	}
+
+	public void setSizeType(int sizeType) {
+		this.sizeType = sizeType;
+	}
+	
+	
 
 }

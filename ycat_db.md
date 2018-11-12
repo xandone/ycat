@@ -1,5 +1,4 @@
-<!-- 
-Userè¡¨
+-- User±í
 create table y_user(
 id int(11) unsigned not null auto_increment,
 name varchar(20) not null unique,
@@ -12,7 +11,7 @@ rtime TIMESTAMP,
 primary key(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
-jokeè¡¨
+--joke±í
 create table y_joke(
 id int(11) unsigned not null auto_increment,
 joke_id varchar(18) not null,
@@ -25,7 +24,7 @@ article_comment_count int(5) DEFAULT '0',
 primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
-jokeç‚¹èµžè¡¨
+--jokeµãÔÞ±í
 create table y_joke_like(
 id int(11) unsigned not null auto_increment,
 joke_id varchar(18) not null,
@@ -33,7 +32,7 @@ joke_user_id varchar(18),
 primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
-jokeè¯„è®ºè¡¨
+--jokeÆÀÂÛ±í
 create table y_joke_comment(
 id int(11) unsigned not null auto_increment,
 comment_id varchar(18) not null,
@@ -44,14 +43,14 @@ comment_date datetime DEFAULT NULL,
 primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
-å›¾ç‰‡
+--Í¼Æ¬
 create table y_image(
 id int(11) unsigned not null auto_increment,
 userId varchar(18) not null,
 imgId varchar(18),
 imgUrl varchar(100),
 pageViews int(6),
+size_type int(1),
 upTime datetime DEFAULT NULL,
 primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
- -->

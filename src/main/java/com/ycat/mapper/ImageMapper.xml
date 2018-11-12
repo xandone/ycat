@@ -11,6 +11,7 @@
 		<result column="imgUrl" property="imgUrl" jdbcType="VARCHAR" />
 		<result column="pageViews" property="pageViews" jdbcType="INTEGER" />
 		<result column="upTime" property="upTime" jdbcType="TIMESTAMP" />
+		<result column="size_type" property="sizeType" jdbcType="INTEGER" />
 	</resultMap>
 
 	<insert id="addImage" parameterType="com.ycat.pojo.ImageBean">
