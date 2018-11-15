@@ -86,6 +86,8 @@ public class ImageServiceImpl implements ImageService {
 		euDataResult.setRows(list);
 		int total = (int) new PageInfo<ImageBean>(list).getTotal();
 		euDataResult.setTotal(total);
+		euDataResult.setMsg("成功");
+		euDataResult.setCode(200);
 
 		return euDataResult;
 	}
