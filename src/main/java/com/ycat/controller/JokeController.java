@@ -177,7 +177,7 @@ public class JokeController extends BaseController {
 			return deleteResult;
 		}
 	}
-	
+
 	@RequestMapping(value = "/rest/joke/comment/delete", method = RequestMethod.POST)
 	@ResponseBody
 	public DeleteResult deleteJokeCommentById(String commentId) {
@@ -190,5 +190,12 @@ public class JokeController extends BaseController {
 			e.printStackTrace();
 			return deleteResult;
 		}
+	}
+
+	@RequestMapping("/headAticleList")
+	@ResponseBody
+	public EuDataResult getArticleList(Integer page, Integer rows) throws Exception {
+		EuDataResult euDataResult = jokeService.getArticleList(page, rows);
+		return euDataResult;
 	}
 }

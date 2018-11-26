@@ -18,6 +18,7 @@ import com.ycat.mapper.ImageMapper;
 import com.ycat.mapper.JokeMapper;
 import com.ycat.mapper.UserMapper;
 import com.ycat.pojo.CommentBean;
+import com.ycat.pojo.HeadArticleBean;
 import com.ycat.pojo.ImageBean;
 import com.ycat.pojo.JokeBean;
 import com.ycat.pojo.JokeLikeBean;
@@ -196,5 +197,23 @@ public class TestItem {
 		imageBean.setUpTime(new Date());
 		mapper.addImage(imageBean);
 	}
+
+	
+	@Test
+	public void addArticleList(){
+		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+		JokeMapper mapper = context.getBean(JokeMapper.class);
+		
+		HeadArticleBean head = new HeadArticleBean();
+		head.setUserId("1");
+		head.setArticelId("2");
+		head.setArticleUrl("dsfdf");
+		head.setImgUrl("1234335");
+		head.setTitle("标题呵呵");
+		head.setPageViews(12);
+		head.setUpTime(new Date());
+		mapper.addAticle(head);
+	}
+
 
 }

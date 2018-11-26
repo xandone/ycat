@@ -30,5 +30,7 @@ public interface JokeService {
 	DeleteResult deleteJokeById(String jokeId)throws Exception;
 	
 	DeleteResult deleteJokeCommentById(String commentId)throws Exception;
+	
+	EuDataResult getArticleList(int page, int rows) throws Exception;
 
 }

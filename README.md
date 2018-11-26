@@ -82,4 +82,17 @@ upTime datetime DEFAULT NULL,
 primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
+--首页轮播
+create table y_head_article(
+id int(11) unsigned not null auto_increment,
+userId varchar(18) not null,
+articelId varchar(18) not null,
+title varchar(100),
+imgUrl varchar(100),
+articleUrl varchar(100),
+pageViews int(6),
+upTime datetime DEFAULT NULL,
+primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
 ```

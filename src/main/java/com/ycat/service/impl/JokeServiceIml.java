@@ -12,6 +12,8 @@ import com.github.pagehelper.PageInfo;
 import com.ycat.mapper.JokeMapper;
 import com.ycat.mapper.UserMapper;
 import com.ycat.pojo.CommentBean;
+import com.ycat.pojo.HeadArticleBean;
+import com.ycat.pojo.ImageBean;
 import com.ycat.pojo.JokeBean;
 import com.ycat.pojo.JokeLikeBean;
 import com.ycat.pojo.User;
@@ -147,6 +149,20 @@ public class JokeServiceIml implements JokeService {
 		DeleteResult deleteResult = new DeleteResult();
 		jokeMapper.deleteJokeCommentById(commentId);
 		return deleteResult;
+	}
+
+	@Override
+	public EuDataResult getArticleList(int page, int rows) throws Exception {
+		PageHelper.startPage(page, rows);
+		List<HeadArticleBean> list = jokeMapper.getArticleList();
+		EuDataResult euDataResult = new EuDataResult();
+		euDataResult.setRows(list);
+		int total = (int) new PageInfo<HeadArticleBean>(list).getTotal();
+		euDataResult.setTotal(total);
+		euDataResult.setMsg("成功");
+		euDataResult.setCode(200);
+
+		return euDataResult;
 	}
 
 }

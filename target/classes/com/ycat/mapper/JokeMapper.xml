@@ -30,6 +30,16 @@
 		<result column="comment_date" property="comment_date" jdbcType="TIMESTAMP" />
 	</resultMap>
 
+	<resultMap id="HeadArticleBeanMap" type="com.ycat.pojo.HeadArticleBean">
+		<result column="userId" property="userId" jdbcType="VARCHAR" />
+		<result column="articelId" property="articelId" jdbcType="VARCHAR" />
+		<result column="imgUrl" property="imgUrl" jdbcType="VARCHAR" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="articleUrl" property="articleUrl" jdbcType="VARCHAR" />
+		<result column="pageViews" property="pageViews" jdbcType="INTEGER" />
+		<result column="upTime" property="upTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
 	<!-- id名称必须和 UserMapper中的方法名相对应 -->
 	<insert id="addJoke" parameterType="com.ycat.pojo.JokeBean">
 		insert into y_joke
@@ -108,9 +118,35 @@
 	<delete id="deleteJokeById">
 		delete from y_joke where joke_id= #{joke_id};
 	</delete>
-	
+
 	<delete id="deleteJokeCommentById">
-		delete from y_joke_comment where comment_id= #{comment_id};
+		delete from y_joke_comment where comment_id=
+		#{comment_id};
 	</delete>
+
+	<select id="getArticleList" resultMap="HeadArticleBeanMap">
+		select * from
+		y_head_article
+	</select>
+
+	<insert id="addAticle" parameterType="com.ycat.pojo.HeadArticleBean">
+		insert into y_head_article
+		(userId,
+		articelId,
+		imgUrl,
+		title,
+		articleUrl,
+		pageViews,
+		upTime
+		) values
+		(#{userId},
+		#{articelId},
+		#{imgUrl},
+		#{title},
+		#{articleUrl},
+		#{pageViews},
+		#{upTime}
+		)
+	</insert>
 
 </mapper>
